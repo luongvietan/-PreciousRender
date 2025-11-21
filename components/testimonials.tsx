@@ -27,41 +27,41 @@ export default function Testimonials() {
   const testimonials = [
     {
       quote:
-        "The team at Webgenios delivered a stunning website for our business. Their attention to detail and focus on user experience has helped us increase our online conversions by 40%.",
-      name: "Sarah Johnson",
-      title: "CEO, TechSolutions Inc.",
+        "Precious Render transformed our entire catalog of 2000+ rings. The photorealistic quality exceeded our expectations, and customers can't tell the difference from professional photography. Our online sales increased 45%.",
+      name: "Priya Mehta",
+      title: "E-commerce Director, Glitz Jewelry Mumbai",
       image:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
     },
     {
       quote:
-        "From concept to execution, Webgenios exceeded our expectations. Their team was responsive, creative, and technically excellent. Our e-commerce site now loads 3x faster and sales have increased significantly.",
-      name: "Michael Chen",
-      title: "Founder, StyleShop",
+        "The turnaround time was incredible—500 SKU renders delivered in just 2 weeks without compromising quality. The team's expertise in jewelry-specific lighting made every diamond sparkle perfectly.",
+      name: "Rajesh Sharma",
+      title: "Owner, Diamond Palace",
       image:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
     },
     {
       quote:
-        "Working with Webgenios was a game-changer for our startup. They built a SaaS platform that was not only beautiful but also highly functional. Their expertise in web application development is unmatched.",
-      name: "Emily Rodriguez",
-      title: "CTO, DataFlow Systems",
+        "The Instagram marketing videos they created for our new collection went viral—over 200K views! The cinematic animations captured the luxury feel we wanted and drove massive traffic to our store.",
+      name: "Ananya Desai",
+      title: "Marketing Manager, Heritage Jewellers",
       image:
         "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
     },
     {
       quote:
-        "I was impressed by Webgenios's ability to translate our brand identity into a digital experience. The website they created for us perfectly captures our company's essence and has received countless compliments.",
-      name: "David Wilson",
-      title: "Marketing Director, Innovate Co.",
+        "Their on-body jewelry renders look so natural—customers love seeing how pieces look when worn. This has significantly reduced our return rates and increased buyer confidence for high-ticket items.",
+      name: "Neha Kapoor",
+      title: "Founder, Luxora Fine Jewelry",
       image:
         "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
     },
     {
       quote:
-        "The SEO optimization Webgenios implemented on our website has dramatically improved our search rankings. We&apos;re now on the first page for all our key terms, and organic traffic has doubled.",
-      name: "Lisa Patel",
-      title: "Owner, Wellness Hub",
+        "Working with a team that understands both rendering and jewelry manufacturing made all the difference. They knew exactly how to handle complex gem cuts and metal finishes—no back-and-forth explanations needed.",
+      name: "Vikram Singh",
+      title: "Creative Director, Royal Gems Export",
       image:
         "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
     },

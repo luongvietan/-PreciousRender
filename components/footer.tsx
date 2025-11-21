@@ -11,10 +11,10 @@ export default function Footer() {
     {
       title: "Services",
       links: [
-        { name: "Business Websites", href: "#services" },
-        { name: "Landing Pages", href: "#services" },
-        { name: "E-commerce", href: "#services" },
-        { name: "Web Applications", href: "#services" },
+        { name: "Still Images", href: "#services" },
+        { name: "360° Animations", href: "#services" },
+        { name: "Marketing Videos", href: "#services" },
+        { name: "On-Body Visuals", href: "#services" },
       ],
     },
     {
@@ -62,12 +62,11 @@ export default function Footer() {
                 />
               </div>
               <span className=" text-2xl font-bold bg-gradient-to-r from-emerald-500 to-cyan-400 bg-clip-text text-transparent">
-                Webgenios
+                Precious Render
               </span>
             </Link>
             <p className="mt-4 text-neutral-600 dark:text-neutral-400 max-w-md">
-              Providing premium web development solutions for modern businesses.
-              We transform your ideas into stunning, high-performance websites.
+              Specializing in photorealistic jewelry renders, CAD-to-catalog workflows, and on-demand jewelry manufacturing support for brands worldwide
             </p>
             <div className="mt-6 space-y-2">
               <div className="flex items-center">
@@ -76,7 +75,7 @@ export default function Footer() {
                   href="mailto:contact@webgenios.com"
                   className="text-neutral-700 dark:text-neutral-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
                 >
-                  contact@webgenios.com
+                  contact@preciousrender.com
                 </a>
               </div>
               <div className="flex items-center">
@@ -85,13 +84,13 @@ export default function Footer() {
                   href="tel:+1234567890"
                   className="text-neutral-700 dark:text-neutral-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
                 >
-                  +84 384 398 634
+                  +91 XXXXX-XXXXX
                 </a>
               </div>
               <div className="flex items-start">
                 <MapPin size={16} className="mr-2 mt-1 text-emerald-500" />
                 <p className="text-neutral-600 dark:text-neutral-400">
-                  Nha Be, Ho Chi Minh City, Vietnam
+                  Mumbai, Maharashtra, India
                 </p>
               </div>
             </div>
@@ -122,7 +121,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="mt-12 pt-6 border-t border-neutral-200 dark:border-neutral-800 flex flex-col md:flex-row justify-between items-center">
           <p className="text-neutral-500 dark:text-neutral-500 text-sm">
-            © {currentYear} Webgenios. All rights reserved.
+            © {currentYear} Precious Render. All rights reserved.
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             {socialLinks.map((link, index) => (

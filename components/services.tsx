@@ -2,57 +2,57 @@
 
 import { motion } from "framer-motion";
 import { MagicCard } from "@/components/ui/magic-card";
-import { Building2, Rocket, ShoppingBag, Database } from "lucide-react";
+import { Camera, Rotate3d, Clapperboard, User } from "lucide-react";
 import { AnimatedBeam } from "@/components/ui/animated-beam";
 
 export default function Services() {
   const services = [
     {
-      title: "Business Websites",
+      title: "Photo-Realistic Product Images",
       description:
-        "Professional websites that establish credibility and help grow your business online. Includes brand integration, content management, and responsive design.",
-      icon: <Building2 className="w-10 h-10 text-emerald-500 mb-4" />,
+        "High-resolution static renders of your jewelry pieces. Perfect for product catalogs, websites, and marketing materials. Showcase every detail with studio-quality lighting and material accuracy.",
+      icon: <Camera className="w-10 h-10 text-emerald-500 mb-4" />,
       features: [
-        "SEO-optimized",
-        "Mobile responsive",
-        "Content management",
-        "Analytics integration",
+        "White background images",
+        "Multiple angle shots",
+        "High-resolution PNG/JPG",
+        "Consistent lighting setup",
       ],
     },
     {
-      title: "Landing Pages",
+      title: "Classic 360° Turntable Animations",
       description:
-        "High-converting landing pages designed to turn visitors into customers. Perfect for product launches, campaigns, and lead generation.",
-      icon: <Rocket className="w-10 h-10 text-emerald-500 mb-4" />,
+        "Cinematic rotating videos that let customers view jewelry from every angle. Perfect for e-commerce sites, product pages, and digital catalogs. Increases customer confidence and engagement.",
+      icon: <Rotate3d className="w-10 h-10 text-emerald-500 mb-4" />,
       features: [
-        "A/B testing",
-        "Lead capture forms",
-        "Call-to-action optimization",
-        "Analytics tracking",
+        "360° full rotation videos",
+        "Multiple viewing speeds",
+        "MP4 format (e-commerce ready)",
+        "Loop-friendly animations",
       ],
     },
     {
-      title: "E-commerce Solutions",
+      title: "Creative Marketing Animations",
       description:
-        "Custom online stores with seamless checkout experiences. We build secure, scalable e-commerce websites that drive conversions and grow your sales.",
-      icon: <ShoppingBag className="w-10 h-10 text-emerald-500 mb-4" />,
+        "Eye-catching cinematic animations designed to captivate your audience. Perfect for Instagram Reels, TikTok, product launches, and digital advertising campaigns. Stand out with luxury motion graphics.",
+      icon: <Clapperboard className="w-10 h-10 text-emerald-500 mb-4" />,
       features: [
-        "Secure payments",
-        "Inventory management",
-        "Product catalog",
-        "Mobile shopping",
+        "Social media optimized formats",
+        "Cinematic motion graphics",
+        "Custom animations & transitions",
+        "Brand integration & text overlays",
       ],
     },
     {
-      title: "Web Applications & SaaS",
+      title: "On-Body Jewelry Visualization",
       description:
-        "Custom web applications and SaaS platforms tailored to your business needs. From concept to deployment, we build scalable solutions.",
-      icon: <Database className="w-10 h-10 text-emerald-500 mb-4" />,
+        "Realistic on-model renders and composites that show how jewelry looks when worn. Increases customer confidence, reduces returns, and boosts conversions for online stores.",
+      icon: <User className="w-10 h-10 text-emerald-500 mb-4" />,
       features: [
-        "User authentication",
-        "Database integration",
-        "API development",
-        "Cloud hosting",
+        "Motion tracking & compositing",
+        "Diverse model selection",
+        "Natural hand & body poses",
+        "Lifestyle photography integration",
       ],
     },
   ];
@@ -86,12 +86,10 @@ export default function Services() {
             Our Services
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-neutral-900 dark:text-white">
-            Web Solutions Tailored to Your Needs
+            Jewelry Rendering Solutions Tailored to Your Brand
           </h2>
           <p className="max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400">
-            From simple landing pages to complex web applications, we provide
-            end-to-end web development services to help your business succeed
-            online.
+            From single product renders to complete catalog production, we provide comprehensive 3D visualization services to help your jewelry business thrive online and offline.
           </p>
         </motion.div>
 

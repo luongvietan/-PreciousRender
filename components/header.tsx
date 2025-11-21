@@ -20,7 +20,6 @@ export default function Header() {
     { name: "Portfolio", href: "#portfolio" },
     { name: "Process", href: "#process" },
     { name: "Pricing", href: "#pricing" },
-    { name: "FAQ", href: "#faq" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -39,7 +38,7 @@ export default function Header() {
               />
             </div>
             <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-cyan-500">
-              Webgenios
+              Precious Render
             </span>
           </Link>
 

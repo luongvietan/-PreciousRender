@@ -74,8 +74,8 @@ export default function ContactForm() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-neutral-600 dark:text-neutral-400"
             >
-              Have a project in mind? Let&apos;s talk about how we can help
-              bring your vision to life.
+              Have a jewelry collection to visualize? Let&apos;s discuss how we can help
+              bring your designs to life with photorealistic renders.
             </motion.p>
           </div>
 
@@ -225,7 +225,7 @@ export default function ContactForm() {
               </div>
               <h3 className="text-lg font-semibold mb-1">Email Us</h3>
               <p className="text-neutral-600 dark:text-neutral-400">
-                contact@webgenios.com
+                contact@preciousrender.com
               </p>
             </div>
 
@@ -248,7 +248,7 @@ export default function ContactForm() {
               </div>
               <h3 className="text-lg font-semibold mb-1">Call Us</h3>
               <p className="text-neutral-600 dark:text-neutral-400">
-                +84 384 398 634
+                +91 XXXXX-XXXXX
               </p>
             </div>
 
@@ -277,7 +277,7 @@ export default function ContactForm() {
               </div>
               <h3 className="text-lg font-semibold mb-1">Visit Us</h3>
               <p className="text-neutral-600 dark:text-neutral-400">
-                Ho Chi Minh City, Vietnam
+                Mumbai, Maharashtra, India
               </p>
             </div>
           </div>

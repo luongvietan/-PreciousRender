@@ -23,47 +23,47 @@ export default function Portfolio() {
   const projects = [
     {
       id: 1,
-      title: "TechCorp Enterprise Website",
-      category: "business",
+      title: "Diamond Ring Collection",
+      category: "still",
       description:
-        "A modern corporate website with animated sections and integrated blog for a technology company.",
+        "High-resolution still renders for a luxury diamond ring collection.",
       image:
-        "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
-      url: "techcorp",
-      technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "Sanity CMS"],
+        "https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      url: "#",
+      technologies: ["3D Rendering", "Lighting", "Texturing"],
     },
     {
       id: 2,
-      title: "FoodDelivery Landing Page",
-      category: "landing",
+      title: "Gold Necklace Turntable",
+      category: "classic",
       description:
-        "High-converting landing page for a food delivery service with online ordering capabilities.",
+        "360-degree turntable animation for an intricate gold necklace.",
       image:
-        "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
-      url: "foodfast",
-      technologies: ["React", "GSAP", "Firebase", "Stripe"],
+        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      url: "#",
+      technologies: ["Animation", "360 Video", "Gold Material"],
     },
     {
       id: 3,
-      title: "Fashion E-commerce Store",
-      category: "ecommerce",
+      title: "Gemstone Earring Campaign",
+      category: "creative",
       description:
-        "A complete e-commerce solution for a fashion brand with inventory management and payment processing.",
+        "Cinematic marketing video for a new gemstone earring launch.",
       image:
-        "https://images.unsplash.com/photo-1519415943484-9fa1873496d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
-      url: "estore",
-      technologies: ["Next.js", "Shopify", "Tailwind CSS", "Vercel"],
+        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      url: "#",
+      technologies: ["Motion Graphics", "Cinematic", "VFX"],
     },
     {
       id: 4,
-      title: "TaskMaster SaaS Application",
-      category: "webapp",
+      title: "On-Model Bracelet View",
+      category: "onbody",
       description:
-        "Project management SaaS application with real-time collaboration features and data visualization.",
+        "Realistic on-body visualization of a diamond bracelet.",
       image:
-        "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
-      url: "taskmaster",
-      technologies: ["React", "Node.js", "MongoDB", "Socket.io", "Chart.js"],
+        "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      url: "#",
+      technologies: ["Compositing", "Model Integration", "Lighting"],
     },
   ];
 
@@ -74,10 +74,10 @@ export default function Portfolio() {
 
   const categories = [
     { id: "all", label: "All Projects" },
-    { id: "business", label: "Business" },
-    { id: "landing", label: "Landing Pages" },
-    { id: "ecommerce", label: "E-commerce" },
-    { id: "webapp", label: "Web Apps" },
+    { id: "still", label: "Still Images" },
+    { id: "classic", label: "Classic Animations" },
+    { id: "creative", label: "Creative Animations" },
+    { id: "onbody", label: "On-Body Visuals" },
   ];
 
   const container = {
@@ -115,8 +115,7 @@ export default function Portfolio() {
             Featured Projects
           </h2>
           <p className="max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400">
-            Take a look at some of our recent work. We&apos;ve helped businesses
-            of all sizes establish a strong online presence.
+            Take a look at our recent renders. We've helped jewelry brands of all sizes showcase their collections with stunning 3D visuals.
           </p>
         </motion.div>
 

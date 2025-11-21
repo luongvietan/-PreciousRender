@@ -11,44 +11,59 @@ import {
 export default function FAQ() {
   const faqs = [
     {
-      question: "What types of businesses do you work with?",
+      question: "What is the Virtual Inventory Model?",
       answer:
-        "We work with businesses of all sizes, from startups to established enterprises across various industries. Our flexible approach allows us to tailor our web development services to meet the specific needs of each client.",
+        "Digital 3D renders showcase your entire catalog without physical inventory. Customers browse and order specific pieces—you manufacture only what's sold.",
     },
     {
-      question: "How long does it take to build a website?",
+      question: "How long does it take to complete a project?",
       answer:
-        "The timeline varies depending on the project scope and complexity. A simple landing page might take 2-3 weeks, while a complex e-commerce site or web application could take 8-12 weeks. During our initial consultation, we&apos;ll provide a more accurate timeline based on your specific requirements.",
+        "Test renders in 24-48 hours. Full projects (50-500 SKUs) in 2-4 weeks. Rush delivery available for additional fee.",
     },
     {
-      question: "Do you provide web hosting and domain registration?",
+      question: "How much can I save with virtual inventory?",
       answer:
-        "Yes, we offer web hosting and domain registration services as part of our packages. We use reliable, secure hosting providers to ensure your website performs optimally. We can also work with your existing hosting provider if you prefer.",
+        "Reduce inventory costs by 70-90%. Instead of ₹50L upfront manufacturing, invest ₹2-5L in renders and manufacture only confirmed orders.",
     },
     {
-      question: "What is your design process like?",
+      question: "Are the files compatible with my website?",
       answer:
-        "Our design process starts with understanding your brand, goals, and target audience. We create wireframes for your approval, followed by high-fidelity designs. We incorporate your feedback through revisions until we achieve the perfect design that represents your brand and meets your business objectives.",
+        "Yes. We deliver 360° videos (MP4), high-res images (PNG/JPG), and on-body composites optimized for Shopify, WooCommerce, Amazon, and custom sites.",
     },
     {
-      question: "Do you provide ongoing maintenance and support?",
+      question: "Do I need to send physical jewelry?",
       answer:
-        "Yes, we offer ongoing maintenance and support packages to ensure your website remains secure, up-to-date, and performs well. Our support includes regular updates, security monitoring, performance optimization, and technical assistance whenever you need it.",
+        "Zero physical inventory. Designs exist as digital files only. Manufacture on-demand when customers order. Eliminates unsold stock, storage costs, and insurance.",
     },
     {
-      question: "How do you handle website security?",
+      question: "What file formats do you accept?",
       answer:
-        "Security is a top priority for us. We implement various security measures including SSL certificates, secure authentication methods, regular security updates, firewall protection, and secure coding practices. We also perform security audits to identify and address potential vulnerabilities.",
+        "Only Rhino 3dm files are accepted. We do not accept other formats such as JewelCAD, OBJ, FBX, STL or others. However, we can create the CAD model from scratch for a fee. The turnaround time for new CAD creation is typically 2-3 business days, depending on the complexity of the design.",
     },
     {
-      question: "Can you help with SEO for my website?",
+      question: "How long does rendering take for animations?",
       answer:
-        "Absolutely! We build all our websites with SEO best practices in mind, including proper HTML structure, fast loading speeds, mobile optimization, and clean code. We also offer additional SEO services including keyword research, on-page optimization, content strategy, and technical SEO audits.",
+        "Rendering time for Creative Marketing Animations depends on the theme’s complexity and duration, typically ranging from 1 to 3 weeks.",
     },
     {
-      question: "What payment methods do you accept?",
+      question: "Can you match my brand style?",
       answer:
-        "We accept various payment methods including credit/debit cards, bank transfers, and PayPal. For larger projects, we typically work with a 50% upfront deposit with the remainder due upon project completion, though we can offer milestone-based payment plans for extended projects.",
+        "Yes. Send us reference images of your existing photography style, lighting preferences, and product presentation. We'll match your aesthetic across the entire catalog.",
+    },
+    {
+      question: "Do you offer rush services?",
+      answer:
+        "Yes, for an additional fee (typically 25-50% premium). Rush projects are prioritized in our render queue.",
+    },
+    {
+      question: "What can be customized in the renders?",
+      answer:
+        "Material adjustments (metal finish, gemstone appearance), lighting setup (brightness, direction, reflections), camera angles, and positioning.",
+    },
+    {
+      question: "Do you create social media content?",
+      answer:
+        "Yes. We create 15-60 second cinematic videos optimized for Instagram Reels, Stories, and Feed posts with animations, graphics, and text overlays.",
     },
   ];
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code, Globe, Lightbulb, Rocket, Shield, Zap } from "lucide-react";
+import { Zap, Gem, ShoppingBag, Sparkles, CheckCircle, Video } from "lucide-react";
 // import { AnimatedBeam } from "@/components/ui/animated-beam";
 import { TextAnimate } from "@/components/ui/text-animate";
 import { useRef, useState } from "react";
@@ -22,50 +22,50 @@ export default function Features() {
 
   const features = [
     {
-      icon: <Rocket className="h-10 w-10 text-white" />,
-      title: "Fast Performance",
+      icon: <Zap className="h-10 w-10 text-white" />,
+      title: "Lightning-Fast Turnaround",
       description:
-        "Optimized code and efficient infrastructure for lightning-fast load times and smooth user experiences.",
+        "Multi-PC rendering farm enables us to deliver 5000+ SKU renders on time without compromising quality or detail.",
       ref: feature1Ref,
       gradient: "from-emerald-500 to-cyan-400",
     },
     {
-      icon: <Shield className="h-10 w-10 text-white" />,
-      title: "Security First",
+      icon: <Gem className="h-10 w-10 text-white" />,
+      title: "Jewelry Rendering Specialists",
       description:
-        "Built-in protection against common vulnerabilities with regular security updates and audits.",
+        "3+ years of specialized expertise focused only on jewelry-specific workflows and lighting setups.",
       ref: feature2Ref,
       gradient: "from-emerald-500 to-cyan-400",
     },
     {
-      icon: <Globe className="h-10 w-10 text-white" />,
-      title: "SEO Optimized",
+      icon: <ShoppingBag className="h-10 w-10 text-white" />,
+      title: "E-commerce Ready",
       description:
-        "Search engine friendly code and structure to help your website rank higher in search results.",
+        "360° turntable videos and photorealistic jewelry renders optimized for e-commerce, social media, and online catalogs",
       ref: feature3Ref,
       gradient: "from-emerald-500 to-cyan-400",
     },
     {
-      icon: <Zap className="h-10 w-10 text-white" />,
-      title: "Modern Technology",
+      icon: <Sparkles className="h-10 w-10 text-white" />,
+      title: "Photorealistic Quality",
       description:
-        "Built with the latest technologies and frameworks to ensure your website stays current and performant.",
+        "Hyper-realistic materials, studio lighting, and advanced rendering techniques that make your jewelry look better than photography.",
       ref: feature4Ref,
       gradient: "from-emerald-500 to-cyan-400",
     },
     {
-      icon: <Code className="h-10 w-10 text-white" />,
-      title: "Clean Code",
+      icon: <CheckCircle className="h-10 w-10 text-white" />,
+      title: "Consistent Quality",
       description:
-        "Well-structured, documented code that's easy to maintain and extend as your business grows.",
+        "Standardized material libraries and automated workflows ensure every render maintains the same exceptional quality across thousands of SKUs.",
       ref: feature5Ref,
       gradient: "from-emerald-500 to-cyan-400",
     },
     {
-      icon: <Lightbulb className="h-10 w-10 text-white" />,
-      title: "Innovative Solutions",
+      icon: <Video className="h-10 w-10 text-white" />,
+      title: "Creative Marketing Videos",
       description:
-        "Creative approaches to solve complex problems and deliver unique user experiences.",
+        "Eye-catching motion graphics and cinematic animations designed specifically for social media, digital screens, and advertising campaigns.",
       ref: feature6Ref,
       gradient: "from-emerald-500 to-cyan-400",
     },
@@ -102,15 +102,14 @@ export default function Features() {
                   by="word"
                   className="text-3xl md:text-5xl font-bold"
                 >
-                  Why Choose Our Services
+                  Why Choose Precious Render
                 </TextAnimate>
               </span>
             </div>
           </div>
 
           <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto text-lg">
-            We deliver high-quality web solutions with a focus on performance,
-            security, and user experience.
+            We deliver photorealistic jewelry renders with exceptional detail, speed, and customer service to help you sell more.
           </p>
         </div>
 

@@ -13,39 +13,39 @@ import {
 export default function Process() {
   const steps = [
     {
-      title: "Requirements Gathering",
+      title: "CAD to Catalog Workflow Begins",
       description:
-        "We start by understanding your business goals, target audience, and specific needs to ensure our solution aligns perfectly with your vision.",
+        "Our CAD to catalog process starts with your 3dm or matrix files—we handle the complete transformation to photorealistic jewelry renders",
       icon: <ClipboardList className="h-8 w-8 text-emerald-500" />,
     },
     {
-      title: "Analysis & Proposal",
+      title: "Material Setup & Lighting Design",
       description:
-        "Our team analyzes your requirements and develops a detailed proposal including timeline, technologies, and cost estimation.",
+        "We apply accurate materials from our extensive library and set up studio-quality HDRI lighting customized for your jewelry type and brand aesthetic.",
       icon: <HelpCircle className="h-8 w-8 text-emerald-500" />,
     },
     {
-      title: "UI/UX Design",
+      title: "Test Renders & Approval",
       description:
-        "We create intuitive, engaging user interfaces that reflect your brand identity while ensuring optimal user experience across all devices.",
+        "Within 24-48 hours, we provide test renders for your review. You can request adjustments to materials, lighting, angles, or camera position.",
       icon: <PenTool className="h-8 w-8 text-emerald-500" />,
     },
     {
-      title: "Development & Testing",
+      title: "Full Production Rendering",
       description:
-        "Our developers bring the design to life with clean, efficient code, while rigorous testing ensures everything functions flawlessly.",
+        "Once approved, our multi-PC rendering farm processes your complete order using optimized settings for maximum quality and efficiency.",
       icon: <Code className="h-8 w-8 text-emerald-500" />,
     },
     {
-      title: "Delivery & Launch",
+      title: "Final Delivery & Export",
       description:
-        "After final approval, we deploy your website to production servers, conduct performance checks, and provide launch support.",
+        "Receive your high-resolution images (PNG/JPG) or 360° videos (MP4) organized by SKU, ready for immediate use on your website or marketing materials.",
       icon: <Check className="h-8 w-8 text-emerald-500" />,
     },
     {
-      title: "Maintenance & Updates",
+      title: "Ongoing Support & Revisions",
       description:
-        "We offer ongoing support to keep your website secure, up-to-date, and performing optimally as your business grows.",
+        "Need material adjustments or additional angles? We maintain your project files and material libraries for quick revisions as your collection evolves.",
       icon: <RotateCw className="h-8 w-8 text-emerald-500" />,
     },
   ];
@@ -64,11 +64,10 @@ export default function Process() {
             Our Process
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-neutral-900 dark:text-white">
-            How We Work
+            Our Rendering Process
           </h2>
           <p className="max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400">
-            Our streamlined process ensures efficient delivery of high-quality
-            web solutions that meet your specific requirements.
+            Our proven virtual jewelry inventory workflow ensures efficient delivery of photorealistic jewelry renders that exceed your expectations.
           </p>
         </motion.div>
 

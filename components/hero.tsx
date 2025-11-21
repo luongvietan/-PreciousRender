@@ -22,11 +22,12 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const words = [
-    "Landing Pages",
-    "Business Websites",
-    "E-commerce Stores",
-    "Web Applications",
-    "SaaS Platforms",
+    "Jewelry renders",
+    "Virtual inventory solutions",
+    "360° product videos",
+    "Marketing animations",
+    "CAD to catalog workflows",
+    "E-commerce visuals",
   ];
 
   return (
@@ -58,7 +59,7 @@ export default function Hero() {
               by="word"
               className="text-neutral-900 dark:text-white"
             >
-              Premium Web Solutions for
+              Premium Jewelry Rendering Services for
             </TextAnimate>
           </h1>
 
@@ -67,7 +68,7 @@ export default function Hero() {
               className="text-4xl md:text-6xl lg:text-7xl font-bold text-emerald-500"
               colors={["#10b981", "#06b6d4", "#0ea5e9", "#10b981"]}
             >
-              Modern Businesses
+              Modern Jewelers
             </AuroraText>
           </div>
 
@@ -79,7 +80,7 @@ export default function Hero() {
             ></TextAnimate>
           </div> */}
 
-          <div className="text-lg md:text-xl font-medium mb-8 md:mb-10 text-neutral-700 dark:text-neutral-300 h-10">
+          <div className="text-lg md:text-xl font-medium mb-8 md:mb-10 text-neutral-700 dark:text-neutral-300 h-24 md:h-20">
             We create beautiful{" "}
             <WordRotate
               words={words}
@@ -116,7 +117,7 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
               className="relative px-6 sm:px-8 py-3 sm:py-4 rounded-md border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors overflow-hidden"
             >
-              View Our Work
+              View Portfolio
               <ShineBorder
                 borderWidth={1}
                 duration={10}
