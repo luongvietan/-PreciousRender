@@ -56,7 +56,7 @@ export default function Footer() {
               <div className="relative h-12 w-12">
                 <Image
                   src="/logo.png"
-                  alt="Webgenios Logo"
+                  alt="Precious Render Logo"
                   fill
                   className="object-contain dark:invert-0 invert"
                 />
@@ -72,7 +72,7 @@ export default function Footer() {
               <div className="flex items-center">
                 <Mail size={16} className="mr-2 text-emerald-500" />
                 <a
-                  href="mailto:contact@webgenios.com"
+                  href="mailto:contact@preciousrender.com"
                   className="text-neutral-700 dark:text-neutral-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
                 >
                   contact@preciousrender.com

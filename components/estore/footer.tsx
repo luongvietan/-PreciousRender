@@ -204,7 +204,7 @@ const EstoreFooter = () => {
               <div>© {currentYear} STYLISH. All rights reserved.</div>
               <div className="mt-1">
                 <span className="inline-flex items-center">
-                  Made by WebGenios Team
+                  Made by Precious Render Team
                 </span>
               </div>
             </div>

@@ -31,7 +31,7 @@ export default function Header() {
             <div className="relative h-12 w-12">
               <Image
                 src="/logo.png"
-                alt="Webgenios Logo"
+                alt="Precious Render Logo"
                 fill
                 className="object-contain dark:invert-0 invert"
                 priority

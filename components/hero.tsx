@@ -137,13 +137,13 @@ export default function Hero() {
                 <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500" />
               </div>
               <div className="flex-1 bg-white dark:bg-neutral-900 rounded-md h-5 sm:h-6 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400">
-                webgenios.com
+                preciousrender.com
               </div>
             </div>
             <div className="w-full aspect-[16/9] relative bg-white dark:bg-neutral-900">
               <Image
                 src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-                alt="Web development preview"
+                alt="Precious Render preview"
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, (max-width: 1024px) 70vw, 60vw"
                 className="object-cover"

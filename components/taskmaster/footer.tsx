@@ -159,7 +159,7 @@ export default function TaskMasterFooter() {
             </div>
             <div className="flex flex-col md:flex-row items-center text-sm text-slate-500 dark:text-slate-400">
               <div className="flex items-center mb-2 md:mb-0">
-                <span>Made by WebGenios Team</span>
+                <span>Made by Precious Render Team</span>
               </div>
               <span className="hidden md:inline mx-2">•</span>
               <span>

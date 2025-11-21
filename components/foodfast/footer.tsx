@@ -113,7 +113,7 @@ export default function FoodFastFooter() {
           <div className="text-sm text-slate-400">
             <p>© {currentYear} FoodFast. All rights reserved.</p>
             <p className="mt-2">
-              Designed by WebGenios Team for food lovers everywhere.
+              Designed by Precious Render Team for food lovers everywhere.
             </p>
           </div>
           <div className="flex flex-wrap gap-4 md:justify-end">

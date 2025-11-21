@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Webgenios - Premium Web Development Services",
+  title: "Precious Render",
   description:
     "Expert web development services for modern businesses. From landing pages to full-scale applications, we deliver high-performance, secure, and SEO-optimized websites.",
   keywords: [
