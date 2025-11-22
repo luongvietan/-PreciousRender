@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Linkedin, Github, Mail, Phone, MapPin } from "lucide-react";
+import { Linkedin, Mail, Phone, MapPin, Instagram, Youtube, MessageCircle } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -39,11 +39,12 @@ export default function Footer() {
 
   const socialLinks = [
     {
-      icon: <Facebook size={20} />,
-      href: "https://www.facebook.com/profile.php?id=61574918454367",
+      icon: <Instagram size={20} />,
+      href: "https://instagram.com/",
     },
-    { icon: <Linkedin size={20} />, href: "https://linkedin.com/in/duelurker" },
-    { icon: <Github size={20} />, href: "https://github.com/luongvietan" },
+    { icon: <Linkedin size={20} />, href: "https://linkedin.com/" },
+    { icon: <MessageCircle size={20} />, href: "https://whatsapp.com/" },
+    { icon: <Youtube size={20} />, href: "https://youtube.com/" },
   ];
 
   return (
@@ -53,17 +54,16 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center">
-              <div className="relative h-12 w-12">
+              <div className="relative h-10 w-auto">
                 <Image
                   src="/logo.png"
                   alt="Precious Render Logo"
-                  fill
-                  className="object-contain dark:invert-0 invert"
+                  width={150}
+                  height={50}
+                  className="h-full w-auto object-contain brightness-0 dark:invert"
+                  priority
                 />
               </div>
-              <span className=" text-2xl font-bold bg-gradient-to-r from-emerald-500 to-cyan-400 bg-clip-text text-transparent">
-                Precious Render
-              </span>
             </Link>
             <p className="mt-4 text-neutral-600 dark:text-neutral-400 max-w-md">
               Specializing in photorealistic jewelry renders, CAD-to-catalog workflows, and on-demand jewelry manufacturing support for brands worldwide
@@ -81,7 +81,7 @@ export default function Footer() {
               <div className="flex items-center">
                 <Phone size={16} className="mr-2 text-emerald-500" />
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+91XXXXXXXXXX"
                   className="text-neutral-700 dark:text-neutral-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
                 >
                   +91 XXXXX-XXXXX

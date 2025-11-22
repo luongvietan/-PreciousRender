@@ -28,18 +28,16 @@ export default function Header() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link href="/" className="flex items-center">
-            <div className="relative h-12 w-12">
+            <div className="relative h-10 w-auto">
               <Image
                 src="/logo.png"
                 alt="Precious Render Logo"
-                fill
-                className="object-contain dark:invert-0 invert"
+                width={150}
+                height={50}
+                className="h-full w-auto object-contain brightness-0 dark:invert"
                 priority
               />
             </div>
-            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-cyan-500">
-              Precious Render
-            </span>
           </Link>
 
           {/* Desktop Navigation */}

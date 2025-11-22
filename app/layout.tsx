@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     "SaaS development",
     "landing page design",
   ],
+  icons: {
+    icon: "/Favicon.png",
+  },
 };
 
 export const viewport: Viewport = {

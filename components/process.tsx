@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion";
 import {
-  ClipboardList,
-  PenTool,
-  Code,
-  Check,
-  HelpCircle,
-  RotateCw,
+  FileCode,
+  Palette,
+  Eye,
+  Cpu,
+  Download,
+  LifeBuoy,
 } from "lucide-react";
 
 export default function Process() {
@@ -16,37 +16,37 @@ export default function Process() {
       title: "CAD to Catalog Workflow Begins",
       description:
         "Our CAD to catalog process starts with your 3dm or matrix files—we handle the complete transformation to photorealistic jewelry renders",
-      icon: <ClipboardList className="h-8 w-8 text-emerald-500" />,
+      icon: <FileCode className="h-8 w-8 text-emerald-500" />,
     },
     {
       title: "Material Setup & Lighting Design",
       description:
         "We apply accurate materials from our extensive library and set up studio-quality HDRI lighting customized for your jewelry type and brand aesthetic.",
-      icon: <HelpCircle className="h-8 w-8 text-emerald-500" />,
+      icon: <Palette className="h-8 w-8 text-emerald-500" />,
     },
     {
       title: "Test Renders & Approval",
       description:
         "Within 24-48 hours, we provide test renders for your review. You can request adjustments to materials, lighting, angles, or camera position.",
-      icon: <PenTool className="h-8 w-8 text-emerald-500" />,
+      icon: <Eye className="h-8 w-8 text-emerald-500" />,
     },
     {
       title: "Full Production Rendering",
       description:
         "Once approved, our multi-PC rendering farm processes your complete order using optimized settings for maximum quality and efficiency.",
-      icon: <Code className="h-8 w-8 text-emerald-500" />,
+      icon: <Cpu className="h-8 w-8 text-emerald-500" />,
     },
     {
       title: "Final Delivery & Export",
       description:
         "Receive your high-resolution images (PNG/JPG) or 360° videos (MP4) organized by SKU, ready for immediate use on your website or marketing materials.",
-      icon: <Check className="h-8 w-8 text-emerald-500" />,
+      icon: <Download className="h-8 w-8 text-emerald-500" />,
     },
     {
       title: "Ongoing Support & Revisions",
       description:
         "Need material adjustments or additional angles? We maintain your project files and material libraries for quick revisions as your collection evolves.",
-      icon: <RotateCw className="h-8 w-8 text-emerald-500" />,
+      icon: <LifeBuoy className="h-8 w-8 text-emerald-500" />,
     },
   ];
 

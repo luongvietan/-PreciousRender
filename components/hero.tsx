@@ -6,7 +6,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { ShineBorder } from "@/components/ui/shine-border";
-import { RetroGrid } from "@/components/ui/retro-grid";
 import { TextAnimate } from "@/components/ui/text-animate";
 import { AuroraText } from "@/components/ui/aurora-text";
 import { WordRotate } from "@/components/ui/word-rotate";
@@ -22,12 +21,12 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const words = [
-    "Jewelry renders",
-    "Virtual inventory solutions",
-    "360° product videos",
-    "Marketing animations",
-    "CAD to catalog workflows",
-    "E-commerce visuals",
+    "Jewelry Renders",
+    "Virtual Inventory Solutions",
+    "360° Product Videos",
+    "Marketing Animations",
+    "CAD to Catalog Workflows",
+    "E-commerce Visuals",
   ];
 
   return (
@@ -36,12 +35,16 @@ export default function Hero() {
       className="relative pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden"
     >
       {/* Enhanced background with RetroGrid */}
-      <RetroGrid
-        opacity={0.3}
-        angle={60}
-        lightLineColor="#10b981"
-        darkLineColor="#10b981"
-      />
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
+      >
+        <source src="/Precious render.mp4" type="video/mp4" />
+      </video>
 
       <motion.div
         style={{ y, opacity }}

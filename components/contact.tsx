@@ -118,13 +118,13 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-medium text-neutral-900 dark:text-white mb-1">
-                      Call Us
+                      WhatsApp/Call Us
                     </p>
                     <a
-                      href="tel:+1234567890"
+                      href="tel:+91XXXXXXXXXX"
                       className="text-neutral-600 dark:text-neutral-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors"
                     >
-                      +84 384 398 634
+                      +91 XXXXX-XXXXX
                     </a>
                   </div>
                 </div>
@@ -135,12 +135,10 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-medium text-neutral-900 dark:text-white mb-1">
-                      Visit Us
+                      Studio Location
                     </p>
                     <p className="text-neutral-600 dark:text-neutral-400">
-                      Nha Be, Ho Chi Minh City, Vietnam
-                      <br />
-                      United States, 10101
+                      Mumbai, Maharashtra, India
                     </p>
                   </div>
                 </div>
