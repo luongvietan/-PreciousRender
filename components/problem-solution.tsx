@@ -80,8 +80,8 @@ export default function ProblemSolution() {
                 <div className="mb-24 relative">
                     <div className="absolute inset-0 bg-emerald-50/50 dark:bg-emerald-900/10 rounded-3xl -z-10 transform -rotate-1"></div>
                     <div className="bg-white dark:bg-neutral-900 rounded-3xl border border-emerald-100 dark:border-emerald-900/30 p-8 md:p-12 shadow-xl">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                            <div>
+                        <div className="flex flex-col items-center text-center">
+                            <div className="max-w-3xl mx-auto mb-10">
                                 <div className="inline-block px-4 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-semibold text-sm mb-6">
                                     The Virtual Inventory Revolution
                                 </div>
@@ -91,12 +91,9 @@ export default function ProblemSolution() {
                                 <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
                                     What if you could showcase 1000+ jewelry designs to customers without manufacturing a single piece? With photorealistic 3D rendering, your entire catalog exists digitally-ready to be produced only when customers place orders.
                                 </p>
-                                <a href="#contact" className="inline-flex items-center px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-semibold transition-colors shadow-lg shadow-emerald-500/20">
-                                    Get Started
-                                    <ArrowRight className="ml-2 w-5 h-5" />
-                                </a>
                             </div>
-                            <div className="relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+
+                            <div className="w-full max-w-5xl mx-auto h-[300px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl mb-10">
                                 <CompareSlider
                                     beforeImage="/before.png"
                                     afterImage="/after.png"
@@ -105,6 +102,11 @@ export default function ProblemSolution() {
                                     className="h-full w-full"
                                 />
                             </div>
+
+                            <a href="#contact" className="inline-flex items-center px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-semibold transition-colors shadow-lg shadow-emerald-500/20">
+                                Get Started
+                                <ArrowRight className="ml-2 w-5 h-5" />
+                            </a>
                         </div>
                     </div>
                 </div>
