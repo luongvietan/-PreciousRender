@@ -5,6 +5,7 @@ import { Clock, TrendingUp, Hourglass, FlaskConical, BarChart3, Layers, AlertCir
 import { MagicCard } from "@/components/ui/magic-card";
 import { ShineBorder } from "@/components/ui/shine-border";
 import Image from "next/image";
+import { CompareSlider } from "@/components/ui/compare-slider";
 
 export default function ProblemSolution() {
     return (
@@ -96,10 +97,13 @@ export default function ProblemSolution() {
                                 </a>
                             </div>
                             <div className="relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-2xl">
-                                {/* Placeholder for Before/After slider image */}
-                                <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
-                                    <p className="text-neutral-500 font-medium">Before / After Slider Image</p>
-                                </div>
+                                <CompareSlider
+                                    beforeImage="/before.png"
+                                    afterImage="/after.png"
+                                    beforeLabel="CAD"
+                                    afterLabel="Render"
+                                    className="h-full w-full"
+                                />
                             </div>
                         </div>
                     </div>

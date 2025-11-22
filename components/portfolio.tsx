@@ -7,6 +7,7 @@ import { Safari } from "@/components/ui/safari";
 import { TabsTrigger, TabsList, TabsContent, Tabs } from "@/components/ui/tabs";
 import { ShineBorder } from "@/components/ui/shine-border";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { CompareSlider } from "@/components/ui/compare-slider";
 
 interface Project {
   id: number;
@@ -16,6 +17,8 @@ interface Project {
   image: string;
   url: string;
   technologies: string[];
+  beforeImage?: string;
+  afterImage?: string;
 }
 
 export default function Portfolio() {
@@ -149,7 +152,7 @@ export default function Portfolio() {
         </motion.div>
 
         <Tabs defaultValue="all" className="mb-12" onValueChange={setActiveTab}>
-          <TabsList className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 md:gap-4 w-full max-w-2xl mx-auto">
+          <TabsList className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 md:gap-4 w-full max-w-4xl mx-auto">
             {categories.map((category) => (
               <TabsTrigger
                 key={category.id}
@@ -228,18 +231,30 @@ export default function Portfolio() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-5xl max-h-[85vh] bg-neutral-900 rounded-lg overflow-hidden shadow-2xl"
+              className="relative w-full max-w-5xl max-h-[85vh] bg-neutral-900 rounded-lg overflow-hidden shadow-2xl flex flex-col"
             >
-              <div className="relative aspect-video w-full">
-                <Image
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  fill
-                  className="object-contain"
-                  priority
-                />
+              <div className="relative w-full flex-grow bg-black flex items-center justify-center overflow-hidden" style={{ minHeight: '50vh' }}>
+                {selectedProject.beforeImage && selectedProject.afterImage ? (
+                  <CompareSlider
+                    beforeImage={selectedProject.beforeImage}
+                    afterImage={selectedProject.afterImage}
+                    beforeLabel="CAD"
+                    afterLabel="Render"
+                    className="h-full w-full"
+                  />
+                ) : (
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={selectedProject.image}
+                      alt={selectedProject.title}
+                      fill
+                      className="object-contain"
+                      priority
+                    />
+                  </div>
+                )}
               </div>
-              <div className="p-6 bg-neutral-900 text-white">
+              <div className="p-6 bg-neutral-900 text-white shrink-0">
                 <h3 className="text-2xl font-bold mb-2">{selectedProject.title}</h3>
                 <p className="text-neutral-400 mb-4">{selectedProject.description}</p>
                 <div className="flex flex-wrap gap-2">
