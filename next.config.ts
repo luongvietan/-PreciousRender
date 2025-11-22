@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
         hostname: "placehold.co",
       },
     ],
+    domains: ["images.unsplash.com", "img.icons8.com", "placehold.co"],
   },
 };
 
