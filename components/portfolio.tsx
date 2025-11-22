@@ -25,52 +25,60 @@ export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const projects = [
-    {
-      id: 1,
-      title: "Diamond Ring Collection",
-      category: "still",
-      description:
-        "High-resolution still renders for a luxury diamond ring collection.",
-      image:
-        "https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      url: "#",
-      technologies: ["3D Rendering", "Lighting", "Texturing"],
-    },
-    {
-      id: 2,
-      title: "Gold Necklace Turntable",
-      category: "classic",
-      description:
-        "360-degree turntable animation for an intricate gold necklace.",
-      image:
-        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      url: "#",
-      technologies: ["Animation", "360 Video", "Gold Material"],
-    },
-    {
-      id: 3,
-      title: "Gemstone Earring Campaign",
-      category: "creative",
-      description:
-        "Cinematic marketing video for a new gemstone earring launch.",
-      image:
-        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      url: "#",
-      technologies: ["Motion Graphics", "Cinematic", "VFX"],
-    },
-    {
-      id: 4,
-      title: "On-Model Bracelet View",
-      category: "onbody",
-      description:
-        "Realistic on-body visualization of a diamond bracelet.",
-      image:
-        "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      url: "#",
-      technologies: ["Compositing", "Model Integration", "Lighting"],
-    },
-  ];
+  // Helper to generate projects
+  const generateProjects = () => {
+    const categories = ["still", "classic", "creative", "onbody"];
+    const baseProjects = [
+      {
+        title: "Diamond Ring Collection",
+        description: "High-resolution still renders for a luxury diamond ring collection.",
+        image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+        technologies: ["3D Rendering", "Lighting", "Texturing"],
+      },
+      {
+        title: "Gold Necklace Turntable",
+        description: "360-degree turntable animation for an intricate gold necklace.",
+        image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+        technologies: ["Animation", "360 Video", "Gold Material"],
+      },
+      {
+        title: "Gemstone Earring Campaign",
+        description: "Cinematic marketing video for a new gemstone earring launch.",
+        image: "https://images.unsplash.com/photo-1599643478518-17488fbbcd75?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+        technologies: ["Motion Graphics", "Cinematic", "VFX"],
+      },
+      {
+        title: "On-Model Bracelet View",
+        description: "Realistic on-body visualization of a diamond bracelet.",
+        image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+        technologies: ["Compositing", "Model Integration", "Lighting"],
+      },
+    ];
+
+    const allProjects: Project[] = [];
+    let idCounter = 1;
+
+    categories.forEach((cat) => {
+      // Generate ~24 projects per category
+      for (let i = 0; i < 24; i++) {
+        const base = baseProjects[i % baseProjects.length];
+        allProjects.push({
+          id: idCounter++,
+          title: `${base.title} ${i + 1}`,
+          category: cat,
+          description: base.description,
+          image: base.image,
+          url: "#",
+          technologies: base.technologies,
+        });
+      }
+    });
+
+    return allProjects;
+  };
+
+  // Memoize projects to prevent regeneration on every render
+  const projects = useState(generateProjects)[0];
 
   const filteredProjects =
     activeTab === "all"
@@ -90,14 +98,14 @@ export default function Portfolio() {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.05, // Faster stagger for many items
       },
     },
   };
 
   const item = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
   };
 
   const handleNext = useCallback(() => {
@@ -132,7 +140,7 @@ export default function Portfolio() {
       id="portfolio"
       className="py-12 md:py-16 bg-neutral-50 dark:bg-neutral-900"
     >
-      <div className="container mx-auto px-4 max-w-7xl">
+      <div className="container mx-auto px-4 max-w-[1400px]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -152,12 +160,12 @@ export default function Portfolio() {
         </motion.div>
 
         <Tabs defaultValue="all" className="mb-12" onValueChange={setActiveTab}>
-          <TabsList className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 md:gap-4 w-full max-w-4xl mx-auto">
+          <TabsList className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 md:gap-4 w-full max-w-5xl mx-auto mb-8 h-auto p-2">
             {categories.map((category) => (
               <TabsTrigger
                 key={category.id}
                 value={category.id}
-                className="data-[state=active]:bg-emerald-500 data-[state=active]:text-white"
+                className="data-[state=active]:bg-emerald-500 data-[state=active]:text-white py-3"
               >
                 {category.label}
               </TabsTrigger>
@@ -170,7 +178,7 @@ export default function Portfolio() {
                 variants={container}
                 initial="hidden"
                 animate="show"
-                className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"
               >
                 {filteredProjects.map((project) => (
                   <motion.div key={project.id} variants={item}>

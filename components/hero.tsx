@@ -32,7 +32,7 @@ export default function Hero() {
   return (
     <div
       ref={ref}
-      className="relative pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden"
+      className="relative pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden min-h-screen flex flex-col justify-center"
     >
       {/* Enhanced background with RetroGrid */}
       {/* Video Background */}
@@ -56,13 +56,21 @@ export default function Hero() {
             Premium Web Development Solutions
           </div> */}
 
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 tracking-tight">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 tracking-tight flex flex-col items-center gap-2">
             <TextAnimate
               animation="blurInUp"
               by="word"
               className="text-neutral-900 dark:text-white"
             >
-              Premium Jewelry Rendering Services for
+              Premium Jewelry
+            </TextAnimate>
+            <TextAnimate
+              animation="blurInUp"
+              by="word"
+              className="text-neutral-900 dark:text-white"
+              delay={0.5}
+            >
+              Rendering Services for
             </TextAnimate>
           </h1>
 
