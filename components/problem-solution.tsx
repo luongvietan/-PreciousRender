@@ -17,7 +17,7 @@ export default function ProblemSolution() {
                         Why Traditional Jewelry Inventory <br className="hidden md:block" /> Is Holding You Back
                     </h2>
                     <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
-                        Physical inventory comes with hidden costs that eat into your profits—and slow down your growth
+                        Physical inventory comes with hidden costs that eat into your profits-and slow down your growth
                     </p>
                 </div>
 
@@ -48,7 +48,7 @@ export default function ProblemSolution() {
                                 <h3 className="text-xl font-bold">Storage & Insurance</h3>
                             </div>
                             <p className="text-neutral-700 dark:text-neutral-300 mb-6 flex-grow">
-                                Storing finished inventory requires security and insurance cost—adding ₹2-5L annually to your overhead.
+                                Storing finished inventory requires security and insurance cost-adding ₹2-5L annually to your overhead.
                             </p>
                             <div className="flex items-start text-red-600 dark:text-red-400 font-medium text-sm mt-auto">
                                 <AlertCircle className="w-5 h-5 mr-2 flex-shrink-0" />
@@ -85,10 +85,10 @@ export default function ProblemSolution() {
                                     The Virtual Inventory Revolution
                                 </div>
                                 <h2 className="text-3xl md:text-4xl font-bold mb-6 text-neutral-900 dark:text-white">
-                                    From CAD to Catalog — Without Stock
+                                    From CAD to Catalog - Without Stock
                                 </h2>
                                 <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
-                                    What if you could showcase 1000+ jewelry designs to customers without manufacturing a single piece? With photorealistic 3D rendering, your entire catalog exists digitally—ready to be produced only when customers place orders.
+                                    What if you could showcase 1000+ jewelry designs to customers without manufacturing a single piece? With photorealistic 3D rendering, your entire catalog exists digitally-ready to be produced only when customers place orders.
                                 </p>
                                 <a href="#contact" className="inline-flex items-center px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-semibold transition-colors shadow-lg shadow-emerald-500/20">
                                     Get Started
@@ -114,7 +114,7 @@ export default function ProblemSolution() {
                         </div>
                         <h3 className="text-xl font-bold mb-3 text-neutral-900 dark:text-white">Infinite Showcase</h3>
                         <p className="text-neutral-600 dark:text-neutral-400">
-                            Display 5000 designs on your website using 360° renders and videos—customers see every detail as if the piece was already made.
+                            Display 5000 designs on your website using 360° renders and videos-customers see every detail as if the piece was already made.
                         </p>
                     </div>
 
@@ -264,7 +264,7 @@ export default function ProblemSolution() {
                         Ready to Build Your Virtual Jewelry Showroom?
                     </h2>
                     <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-10">
-                        We specialize in creating photorealistic 3D renders that look identical to finished jewelry—so realistic, customers can&apos;t tell the difference. Here&apos;s how we help you transition to virtual inventory:
+                        We specialize in creating photorealistic 3D renders that look identical to finished jewelry-so realistic, customers can&apos;t tell the difference. Here&apos;s how we help you transition to virtual inventory:
                     </p>
                     <a href="#services" className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white rounded-xl font-bold text-lg hover:shadow-lg hover:scale-105 transition-all">
                         Get Started

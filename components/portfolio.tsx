@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Safari } from "@/components/ui/safari";
 import { TabsTrigger, TabsList, TabsContent, Tabs } from "@/components/ui/tabs";
 import { ShineBorder } from "@/components/ui/shine-border";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 interface Project {
   id: number;
@@ -19,6 +20,7 @@ interface Project {
 
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("all");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const projects = [
     {
@@ -95,6 +97,33 @@ export default function Portfolio() {
     show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
+  const handleNext = useCallback(() => {
+    if (!selectedProject) return;
+    const currentIndex = filteredProjects.findIndex(p => p.id === selectedProject.id);
+    const nextIndex = (currentIndex + 1) % filteredProjects.length;
+    setSelectedProject(filteredProjects[nextIndex]);
+  }, [selectedProject, filteredProjects]);
+
+  const handlePrev = useCallback(() => {
+    if (!selectedProject) return;
+    const currentIndex = filteredProjects.findIndex(p => p.id === selectedProject.id);
+    const prevIndex = (currentIndex - 1 + filteredProjects.length) % filteredProjects.length;
+    setSelectedProject(filteredProjects[prevIndex]);
+  }, [selectedProject, filteredProjects]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedProject) return;
+
+      if (e.key === "ArrowRight") handleNext();
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "Escape") setSelectedProject(null);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedProject, handleNext, handlePrev]);
+
   return (
     <section
       id="portfolio"
@@ -142,45 +171,106 @@ export default function Portfolio() {
               >
                 {filteredProjects.map((project) => (
                   <motion.div key={project.id} variants={item}>
-                    <ProjectCard project={project} />
+                    <ProjectCard
+                      project={project}
+                      onClick={() => setSelectedProject(project)}
+                    />
                   </motion.div>
                 ))}
               </motion.div>
             </TabsContent>
           ))}
         </Tabs>
-
-        {/* <div className="text-center mt-12">
-          <ShineBorder
-            containerClassName="inline-block"
-            borderWidth={1}
-            shimmerColor="rgba(16, 185, 129, 0.2)"
-          >
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center px-6 py-3 rounded-md bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-medium transition-colors"
-            >
-              Discuss Your Project
-            </motion.a>
-          </ShineBorder>
-        </div> */}
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+            onClick={() => setSelectedProject(null)}
+          >
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedProject(null);
+              }}
+              className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-50"
+            >
+              <X size={32} />
+            </button>
+
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handlePrev();
+              }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full z-50"
+            >
+              <ChevronLeft size={40} />
+            </button>
+
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleNext();
+              }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full z-50"
+            >
+              <ChevronRight size={40} />
+            </button>
+
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-5xl max-h-[85vh] bg-neutral-900 rounded-lg overflow-hidden shadow-2xl"
+            >
+              <div className="relative aspect-video w-full">
+                <Image
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <div className="p-6 bg-neutral-900 text-white">
+                <h3 className="text-2xl font-bold mb-2">{selectedProject.title}</h3>
+                <p className="text-neutral-400 mb-4">{selectedProject.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.technologies.map((tech, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1 text-sm rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
   return (
-    <motion.div whileHover={{ y: -5 }} className="group h-full">
+    <motion.div whileHover={{ y: -5 }} className="group h-full cursor-pointer" onClick={onClick}>
       <ShineBorder
         containerClassName="h-full"
         borderWidth={1}
         shimmerColor="rgba(16, 185, 129, 0.2)"
       >
-        <a href={project.url} className="block h-full">
-          <Safari url={project.url} className="shadow-lg h-full">
+        <div className="block h-full">
+          <Safari url={project.url} className="shadow-lg h-full pointer-events-none">
             <div className="relative h-64 w-full">
               <Image
                 src={project.image}
@@ -209,7 +299,7 @@ function ProjectCard({ project }: { project: Project }) {
               </div>
             </div>
           </Safari>
-        </a>
+        </div>
       </ShineBorder>
     </motion.div>
   );

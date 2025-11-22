@@ -13,7 +13,7 @@ export default function FAQ() {
     {
       question: "What is the Virtual Inventory Model?",
       answer:
-        "Digital 3D renders showcase your entire catalog without physical inventory. Customers browse and order specific pieces—you manufacture only what's sold.",
+        "Digital 3D renders showcase your entire catalog without physical inventory. Customers browse and order specific pieces-you manufacture only what's sold.",
     },
     {
       question: "How long does it take to complete a project?",

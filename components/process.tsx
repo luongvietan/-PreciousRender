@@ -15,7 +15,7 @@ export default function Process() {
     {
       title: "CAD to Catalog Workflow Begins",
       description:
-        "Our CAD to catalog process starts with your 3dm or matrix files—we handle the complete transformation to photorealistic jewelry renders",
+        "Our CAD to catalog process starts with your 3dm or matrix files-we handle the complete transformation to photorealistic jewelry renders",
       icon: <FileCode className="h-8 w-8 text-emerald-500" />,
     },
     {

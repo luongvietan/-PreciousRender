@@ -35,7 +35,7 @@ export default function Testimonials() {
     },
     {
       quote:
-        "The turnaround time was incredible—500 SKU renders delivered in just 2 weeks without compromising quality. The team's expertise in jewelry-specific lighting made every diamond sparkle perfectly.",
+        "The turnaround time was incredible-500 SKU renders delivered in just 2 weeks without compromising quality. The team's expertise in jewelry-specific lighting made every diamond sparkle perfectly.",
       name: "Rajesh Sharma",
       title: "Owner, Diamond Palace",
       image:
@@ -43,7 +43,7 @@ export default function Testimonials() {
     },
     {
       quote:
-        "The Instagram marketing videos they created for our new collection went viral—over 200K views! The cinematic animations captured the luxury feel we wanted and drove massive traffic to our store.",
+        "The Instagram marketing videos they created for our new collection went viral-over 200K views! The cinematic animations captured the luxury feel we wanted and drove massive traffic to our store.",
       name: "Ananya Desai",
       title: "Marketing Manager, Heritage Jewellers",
       image:
@@ -51,7 +51,7 @@ export default function Testimonials() {
     },
     {
       quote:
-        "Their on-body jewelry renders look so natural—customers love seeing how pieces look when worn. This has significantly reduced our return rates and increased buyer confidence for high-ticket items.",
+        "Their on-body jewelry renders look so natural-customers love seeing how pieces look when worn. This has significantly reduced our return rates and increased buyer confidence for high-ticket items.",
       name: "Neha Kapoor",
       title: "Founder, Luxora Fine Jewelry",
       image:
@@ -59,7 +59,7 @@ export default function Testimonials() {
     },
     {
       quote:
-        "Working with a team that understands both rendering and jewelry manufacturing made all the difference. They knew exactly how to handle complex gem cuts and metal finishes—no back-and-forth explanations needed.",
+        "Working with a team that understands both rendering and jewelry manufacturing made all the difference. They knew exactly how to handle complex gem cuts and metal finishes-no back-and-forth explanations needed.",
       name: "Vikram Singh",
       title: "Creative Director, Royal Gems Export",
       image:

@@ -95,7 +95,7 @@ export default function FoodFastTestimonials() {
             What Our Customers Say
           </h2>
           <p className="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
-            Don&apos;t just take our word for it—see what real customers are
+            Don&apos;t just take our word for it-see what real customers are
             saying about their FoodFast experience
           </p>
         </div>
@@ -137,11 +137,10 @@ export default function FoodFastTestimonials() {
                         .map((_, i) => (
                           <Star
                             key={i}
-                            className={`h-4 w-4 ${
-                              i < testimonials[activeIndex].rating
+                            className={`h-4 w-4 ${i < testimonials[activeIndex].rating
                                 ? "text-yellow-400 fill-yellow-400"
                                 : "text-slate-300 dark:text-slate-600"
-                            }`}
+                              }`}
                           />
                         ))}
                     </div>
@@ -168,11 +167,10 @@ export default function FoodFastTestimonials() {
                   <button
                     key={index}
                     onClick={() => setActiveIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      activeIndex === index
+                    className={`w-2 h-2 rounded-full transition-all ${activeIndex === index
                         ? "w-6 bg-orange-500"
                         : "bg-slate-300 dark:bg-slate-600"
-                    }`}
+                      }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
                 ))}
