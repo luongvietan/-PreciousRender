@@ -32,25 +32,25 @@ export default function Portfolio() {
       {
         title: "Diamond Ring Collection",
         description: "High-resolution still renders for a luxury diamond ring collection.",
-        image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+        image: "https://placehold.co/800x600/10b981/white?text=Diamond+Ring",
         technologies: ["3D Rendering", "Lighting", "Texturing"],
       },
       {
         title: "Gold Necklace Turntable",
         description: "360-degree turntable animation for an intricate gold necklace.",
-        image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+        image: "https://placehold.co/800x600/06b6d4/white?text=Gold+Necklace",
         technologies: ["Animation", "360 Video", "Gold Material"],
       },
       {
         title: "Gemstone Earring Campaign",
         description: "Cinematic marketing video for a new gemstone earring launch.",
-        image: "https://images.unsplash.com/photo-1599643478518-17488fbbcd75?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+        image: "https://placehold.co/800x600/8b5cf6/white?text=Gemstone+Earrings",
         technologies: ["Motion Graphics", "Cinematic", "VFX"],
       },
       {
         title: "On-Model Bracelet View",
         description: "Realistic on-body visualization of a diamond bracelet.",
-        image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+        image: "https://placehold.co/800x600/f43f5e/white?text=Bracelet+View",
         technologies: ["Compositing", "Model Integration", "Lighting"],
       },
     ];
@@ -241,7 +241,7 @@ export default function Portfolio() {
               onClick={(e) => e.stopPropagation()}
               className="relative w-full max-w-5xl max-h-[85vh] bg-neutral-900 rounded-lg overflow-hidden shadow-2xl flex flex-col"
             >
-              <div className="relative w-full flex-grow bg-black flex items-center justify-center overflow-hidden" style={{ minHeight: '50vh' }}>
+              <div className="relative w-full h-[50vh] md:h-[60vh] bg-neutral-950 flex items-center justify-center overflow-hidden">
                 {selectedProject.beforeImage && selectedProject.afterImage ? (
                   <CompareSlider
                     beforeImage={selectedProject.beforeImage}
@@ -251,13 +251,11 @@ export default function Portfolio() {
                     className="h-full w-full"
                   />
                 ) : (
-                  <div className="relative w-full h-full">
-                    <Image
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <img
                       src={selectedProject.image}
                       alt={selectedProject.title}
-                      fill
-                      className="object-contain"
-                      priority
+                      className="max-w-full max-h-full object-contain"
                     />
                   </div>
                 )}
