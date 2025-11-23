@@ -41,6 +41,7 @@ export default function Hero() {
         loop
         muted
         playsInline
+        preload="metadata"
         className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
       >
         <source src="/Precious render.mp4" type="video/mp4" />

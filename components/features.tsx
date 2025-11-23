@@ -96,7 +96,7 @@ export default function Features() {
           <div className="inline-block mb-4">
             <div className="relative">
               <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-emerald-500/30 to-cyan-500/30 blur-xl"></div>
-              <span className="relative text-neutral-900 dark:text-white">
+              <h2 className="relative text-neutral-900 dark:text-white">
                 <TextAnimate
                   animation="blurInUp"
                   by="word"
@@ -104,7 +104,7 @@ export default function Features() {
                 >
                   Why Choose Precious Render
                 </TextAnimate>
-              </span>
+              </h2>
             </div>
           </div>
 

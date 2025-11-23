@@ -131,6 +131,7 @@ export default function Footer() {
                 className="text-neutral-600 dark:text-neutral-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Visit our ${link.href.includes("instagram") ? "Instagram" : link.href.includes("linkedin") ? "LinkedIn" : link.href.includes("whatsapp") ? "WhatsApp" : "YouTube"} page`}
               >
                 {link.icon}
               </a>
