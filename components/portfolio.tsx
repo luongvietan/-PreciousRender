@@ -366,11 +366,9 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
       <ShineBorder
         containerClassName="h-full"
         borderWidth={1}
-        borderColor="rgba(168, 85, 247, 0.4)"
-        shimmerColor="rgba(168, 85, 247, 0.4)"
-        borderRadius="1rem"
+        shimmerColor="rgba(16, 185, 129, 0.2)"
       >
-        <div className="block h-full relative p-3">
+        <div className="block h-full relative">
           <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-800">
             <Image
               src={project.image}
@@ -381,15 +379,15 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
             />
             {project.type === "video" && (
               <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
-                <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center text-purple-600 shadow-lg transform group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center text-emerald-600 shadow-lg transform group-hover:scale-110 transition-transform">
                   <Play fill="currentColor" className="ml-1" size={20} />
                 </div>
               </div>
             )}
           </div>
           <div className="mt-3">
-            <h3 className="text-base font-semibold text-neutral-900 dark:text-white truncate">{project.title}</h3>
-            <p className="text-sm text-neutral-500 dark:text-neutral-400 truncate">{project.category}</p>
+            <h3 className="text-sm font-medium text-neutral-900 dark:text-white truncate">{project.title}</h3>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400 truncate">{project.category}</p>
           </div>
         </div>
       </ShineBorder>
