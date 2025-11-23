@@ -4,9 +4,8 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Safari } from "@/components/ui/safari";
-import { TabsTrigger, TabsList, TabsContent, Tabs } from "@/components/ui/tabs";
 import { ShineBorder } from "@/components/ui/shine-border";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Play } from "lucide-react";
 import { CompareSlider } from "@/components/ui/compare-slider";
 
 interface Project {
@@ -19,57 +18,123 @@ interface Project {
   technologies: string[];
   beforeImage?: string;
   afterImage?: string;
+  videoUrl?: string;
+  type: "image" | "video";
 }
 
 export default function Portfolio() {
-  const [activeTab, setActiveTab] = useState("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   // Helper to generate projects
   const generateProjects = () => {
     const categories = ["still", "classic", "creative", "onbody"];
-    const baseProjects = [
-      {
-        title: "Diamond Ring Collection",
-        description: "High-resolution still renders for a luxury diamond ring collection.",
-        image: "https://placehold.co/800x600/10b981/white?text=Diamond+Ring",
-        technologies: ["3D Rendering", "Lighting", "Texturing"],
-      },
-      {
-        title: "Gold Necklace Turntable",
-        description: "360-degree turntable animation for an intricate gold necklace.",
-        image: "https://placehold.co/800x600/06b6d4/white?text=Gold+Necklace",
-        technologies: ["Animation", "360 Video", "Gold Material"],
-      },
-      {
-        title: "Gemstone Earring Campaign",
-        description: "Cinematic marketing video for a new gemstone earring launch.",
-        image: "https://placehold.co/800x600/8b5cf6/white?text=Gemstone+Earrings",
-        technologies: ["Motion Graphics", "Cinematic", "VFX"],
-      },
-      {
-        title: "On-Model Bracelet View",
-        description: "Realistic on-body visualization of a diamond bracelet.",
-        image: "https://placehold.co/800x600/f43f5e/white?text=Bracelet+View",
-        technologies: ["Compositing", "Model Integration", "Lighting"],
-      },
+
+    const stillImages = [
+      { src: "/Still Images/Bright Background/01-Robert-Procop-Ring-White-2-Big.jpg", title: "Robert Procop Ring" },
+      { src: "/Still Images/Bright Background/0585-Pics_00000.jpg", title: "Diamond Solitaire" },
+      { src: "/Still Images/Bright Background/36-Pics-PL_00005-Large.jpg", title: "Platinum Band" },
+      { src: "/Still Images/Bright Background/573-liori_00001.jpg", title: "Liori Diamond Ring" },
+      { src: "/Still Images/Bright Background/Autumn-Earrings-01-big.jpg", title: "Autumn Earrings" },
+      { src: "/Still Images/Bright Background/Nehadani-Color_00000-big.jpg", title: "Nehadani Color Collection" },
+      { src: "/Still Images/Bright Background/bracelet_00012-big.jpg", title: "Diamond Tennis Bracelet" },
+      { src: "/Still Images/Dark Background/01-Ring-De-Grisogono-1-big.jpg", title: "De Grisogono Ring" },
+      { src: "/Still Images/Dark Background/Bluestone-Ring-BISD0327R02.jpg", title: "Bluestone Ring" },
+      { src: "/Still Images/Dark Background/Braslet.jpg", title: "Luxury Bracelet" },
+      { src: "/Still Images/Dark Background/Cartier-PARIS-NOUVELLE-VAGUE-BRACELET.jpg", title: "Cartier Paris Bracelet" },
+      { src: "/Still Images/Dark Background/Graff-Necklace.jpg", title: "Graff Necklace" },
+      { src: "/Still Images/Dark Background/Jewelett-Black-Big-.jpg", title: "Jewelett Black Edition" },
+      { src: "/Still Images/Dark Background/Winter-Leaves-Necklace.jpg", title: "Winter Leaves Necklace" },
+      { src: "/Still Images/Bright Background/01-Robert-Procop-Ring-White-4-Big.jpg", title: "Robert Procop Ring II" },
+      { src: "/Still Images/Bright Background/0585-Pics_00005.jpg", title: "Diamond Solitaire II" },
+      { src: "/Still Images/Bright Background/06-R060416__00006.jpg", title: "Elegant Diamond Ring" },
+      { src: "/Still Images/Bright Background/36-Pics-PL_00006-Large.jpg", title: "Platinum Band II" },
+      { src: "/Still Images/Bright Background/573-liori_00004.jpg", title: "Liori Diamond Ring II" },
+      { src: "/Still Images/Bright Background/Autumn-Earrings-02-big.jpg", title: "Autumn Earrings II" },
+      { src: "/Still Images/Bright Background/BIDG0555R19_web.jpg", title: "Gold Ring Design" },
+      { src: "/Still Images/Bright Background/Nehadani-Color_00001-big.jpg", title: "Nehadani Color II" },
+      { src: "/Still Images/Bright Background/bracelet_00013-big.jpg", title: "Diamond Tennis Bracelet II" },
+      { src: "/Still Images/Dark Background/01-Ring-De-Grisogono-2-big.jpg", title: "De Grisogono Ring II" },
+    ];
+
+    const onBodyImages = [
+      { src: "/Still Images/Bright Background/bracelet_00012-big.jpg", title: "Diamond Tennis Bracelet" },
+      { src: "/Still Images/Bright Background/bracelet_00013-big.jpg", title: "Diamond Tennis Bracelet II" },
+      { src: "/Still Images/Bright Background/bracelet_00014-big.jpg", title: "Diamond Tennis Bracelet III" },
+      { src: "/Still Images/Dark Background/Braslet.jpg", title: "Luxury Gold Bracelet" },
+      { src: "/Still Images/Dark Background/Cartier-PARIS-NOUVELLE-VAGUE-BRACELET.jpg", title: "Paris Nouvelle Vague" },
+    ];
+
+    const classicThumbnails = [
+      "/Still Images/Dark Background/01-Ring-De-Grisogono-1-big.jpg",
+      "/Still Images/Dark Background/01-Ring-De-Grisogono-2-big.jpg",
+      "/Still Images/Dark Background/01-Ring-De-Grisogono-3-big.jpg",
+      "/Still Images/Bright Background/01-Robert-Procop-Ring-White-2-Big.jpg",
+    ];
+
+    const creativeThumbnails = [
+      "/Still Images/Bright Background/Nehadani-Color_00000-big.jpg",
+      "/Still Images/Bright Background/Nehadani-Color_00001-big.jpg",
+      "/Still Images/Bright Background/Nehadani-Color_00002-big.jpg",
+      "/Still Images/Bright Background/Nehadani-Color_00003-big.jpg",
     ];
 
     const allProjects: Project[] = [];
     let idCounter = 1;
 
     categories.forEach((cat) => {
-      // Generate ~24 projects per category
-      for (let i = 0; i < 24; i++) {
-        const base = baseProjects[i % baseProjects.length];
-        allProjects.push({
-          id: idCounter++,
-          title: `${base.title} ${i + 1}`,
-          category: cat,
-          description: base.description,
-          image: base.image,
-          url: "#",
-          technologies: base.technologies,
+      if (cat === "still") {
+        stillImages.forEach((img) => {
+          allProjects.push({
+            id: idCounter++,
+            title: img.title,
+            category: cat,
+            description: "High-resolution photorealistic render showcasing intricate details and material accuracy.",
+            image: img.src,
+            url: "#",
+            technologies: ["3D Rendering", "Ray Tracing", "High Poly"],
+            type: "image",
+          });
+        });
+      } else if (cat === "onbody") {
+        onBodyImages.forEach((img) => {
+          allProjects.push({
+            id: idCounter++,
+            title: img.title,
+            category: cat,
+            description: "Realistic visualization of jewelry worn on models to help customers visualize scale and style.",
+            image: img.src,
+            url: "#",
+            technologies: ["Compositing", "Model Integration", "Lighting"],
+            type: "image",
+          });
+        });
+      } else if (cat === "classic") {
+        classicThumbnails.forEach((src, i) => {
+          allProjects.push({
+            id: idCounter++,
+            title: `Classic Animation ${i + 1}`,
+            category: cat,
+            description: "Elegant 360-degree rotation showcasing the full geometry of the design.",
+            image: src,
+            url: "#",
+            technologies: ["Animation", "360 Video", "Gold Material"],
+            type: "video",
+            videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Placeholder
+          });
+        });
+      } else if (cat === "creative") {
+        creativeThumbnails.forEach((src, i) => {
+          allProjects.push({
+            id: idCounter++,
+            title: `Creative Campaign ${i + 1}`,
+            category: cat,
+            description: "Dynamic motion graphics and cinematic storytelling for brand marketing.",
+            image: src,
+            url: "#",
+            technologies: ["Motion Graphics", "Cinematic", "VFX"],
+            type: "video",
+            videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Placeholder
+          });
         });
       }
     });
@@ -80,17 +145,27 @@ export default function Portfolio() {
   // Memoize projects to prevent regeneration on every render
   const projects = useState(generateProjects)[0];
 
-  const filteredProjects =
-    activeTab === "all"
-      ? projects
-      : projects.filter((project) => project.category === activeTab);
-
   const categories = [
-    { id: "all", label: "All Projects" },
-    { id: "still", label: "Still Images" },
-    { id: "classic", label: "Classic Animations" },
-    { id: "creative", label: "Creative Animations" },
-    { id: "onbody", label: "On-Body Visuals" },
+    {
+      id: "still",
+      label: "Still Images",
+      description: "High-resolution photorealistic renders that capture every detail of your jewelry pieces.",
+    },
+    {
+      id: "classic",
+      label: "Classic Animations",
+      description: "Elegant 360-degree rotations and simple movements to showcase the full geometry of your designs.",
+    },
+    {
+      id: "creative",
+      label: "Creative Animations",
+      description: "Dynamic motion graphics and cinematic storytelling to elevate your brand marketing.",
+    },
+    {
+      id: "onbody",
+      label: "On-Body Visuals",
+      description: "Realistic visualizations of jewelry worn on models to help customers visualize scale and style.",
+    },
   ];
 
   const container = {
@@ -98,7 +173,7 @@ export default function Portfolio() {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05, // Faster stagger for many items
+        staggerChildren: 0.05,
       },
     },
   };
@@ -110,17 +185,18 @@ export default function Portfolio() {
 
   const handleNext = useCallback(() => {
     if (!selectedProject) return;
-    const currentIndex = filteredProjects.findIndex(p => p.id === selectedProject.id);
-    const nextIndex = (currentIndex + 1) % filteredProjects.length;
-    setSelectedProject(filteredProjects[nextIndex]);
-  }, [selectedProject, filteredProjects]);
+    // Find current project in the full list
+    const currentIndex = projects.findIndex(p => p.id === selectedProject.id);
+    const nextIndex = (currentIndex + 1) % projects.length;
+    setSelectedProject(projects[nextIndex]);
+  }, [selectedProject, projects]);
 
   const handlePrev = useCallback(() => {
     if (!selectedProject) return;
-    const currentIndex = filteredProjects.findIndex(p => p.id === selectedProject.id);
-    const prevIndex = (currentIndex - 1 + filteredProjects.length) % filteredProjects.length;
-    setSelectedProject(filteredProjects[prevIndex]);
-  }, [selectedProject, filteredProjects]);
+    const currentIndex = projects.findIndex(p => p.id === selectedProject.id);
+    const prevIndex = (currentIndex - 1 + projects.length) % projects.length;
+    setSelectedProject(projects[prevIndex]);
+  }, [selectedProject, projects]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -159,39 +235,42 @@ export default function Portfolio() {
           </p>
         </motion.div>
 
-        <Tabs defaultValue="all" className="mb-12" onValueChange={setActiveTab}>
-          <TabsList className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 md:gap-4 w-full max-w-5xl mx-auto mb-8 h-auto p-2">
-            {categories.map((category) => (
-              <TabsTrigger
-                key={category.id}
-                value={category.id}
-                className="data-[state=active]:bg-emerald-500 data-[state=active]:text-white py-3"
-              >
-                {category.label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+        <div className="space-y-20">
+          {categories.map((category) => {
+            const categoryProjects = projects.filter((p) => p.category === category.id);
+            if (categoryProjects.length === 0) return null;
 
-          {categories.map((category) => (
-            <TabsContent key={category.id} value={category.id} className="mt-8">
-              <motion.div
-                variants={container}
-                initial="hidden"
-                animate="show"
-                className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"
-              >
-                {filteredProjects.map((project) => (
-                  <motion.div key={project.id} variants={item}>
-                    <ProjectCard
-                      project={project}
-                      onClick={() => setSelectedProject(project)}
-                    />
-                  </motion.div>
-                ))}
-              </motion.div>
-            </TabsContent>
-          ))}
-        </Tabs>
+            return (
+              <div key={category.id} className="relative">
+                <div className="mb-8 text-center md:text-left">
+                  <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-white mb-2">
+                    {category.label}
+                  </h3>
+                  <p className="text-neutral-600 dark:text-neutral-400 max-w-3xl">
+                    {category.description}
+                  </p>
+                </div>
+
+                <motion.div
+                  variants={container}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"
+                >
+                  {categoryProjects.map((project) => (
+                    <motion.div key={project.id} variants={item}>
+                      <ProjectCard
+                        project={project}
+                        onClick={() => setSelectedProject(project)}
+                      />
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {/* Lightbox Modal */}
@@ -201,7 +280,7 @@ export default function Portfolio() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
             onClick={() => setSelectedProject(null)}
           >
             <button
@@ -219,7 +298,7 @@ export default function Portfolio() {
                 e.stopPropagation();
                 handlePrev();
               }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full z-50"
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full z-50 hidden md:block"
             >
               <ChevronLeft size={40} />
             </button>
@@ -229,7 +308,7 @@ export default function Portfolio() {
                 e.stopPropagation();
                 handleNext();
               }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full z-50"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full z-50 hidden md:block"
             >
               <ChevronRight size={40} />
             </button>
@@ -239,10 +318,23 @@ export default function Portfolio() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-5xl max-h-[85vh] bg-neutral-900 rounded-lg overflow-hidden shadow-2xl flex flex-col"
+              className="relative w-full max-w-6xl max-h-[90vh] flex items-center justify-center"
             >
-              <div className="relative w-full h-[50vh] md:h-[60vh] bg-neutral-950 flex items-center justify-center overflow-hidden">
-                {selectedProject.beforeImage && selectedProject.afterImage ? (
+              {selectedProject.type === "video" && selectedProject.videoUrl ? (
+                <div className="w-full aspect-video bg-black rounded-lg overflow-hidden shadow-2xl">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={selectedProject.videoUrl}
+                    title={selectedProject.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
+              ) : selectedProject.beforeImage && selectedProject.afterImage ? (
+                <div className="w-full h-[80vh] bg-neutral-900 rounded-lg overflow-hidden shadow-2xl">
                   <CompareSlider
                     beforeImage={selectedProject.beforeImage}
                     afterImage={selectedProject.afterImage}
@@ -250,30 +342,16 @@ export default function Portfolio() {
                     afterLabel="Render"
                     className="h-full w-full"
                   />
-                ) : (
-                  <div className="relative w-full h-full flex items-center justify-center">
-                    <img
-                      src={selectedProject.image}
-                      alt={selectedProject.title}
-                      className="max-w-full max-h-full object-contain"
-                    />
-                  </div>
-                )}
-              </div>
-              <div className="p-6 bg-neutral-900 text-white shrink-0">
-                <h3 className="text-2xl font-bold mb-2">{selectedProject.title}</h3>
-                <p className="text-neutral-400 mb-4">{selectedProject.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {selectedProject.technologies.map((tech, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1 text-sm rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
-                    >
-                      {tech}
-                    </span>
-                  ))}
                 </div>
-              </div>
+              ) : (
+                <div className="relative w-full h-auto max-h-[90vh] flex items-center justify-center">
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+                  />
+                </div>
+              )}
             </motion.div>
           </motion.div>
         )}
@@ -288,38 +366,31 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
       <ShineBorder
         containerClassName="h-full"
         borderWidth={1}
-        shimmerColor="rgba(16, 185, 129, 0.2)"
+        borderColor="rgba(168, 85, 247, 0.4)"
+        shimmerColor="rgba(168, 85, 247, 0.4)"
+        borderRadius="1rem"
       >
-        <div className="block h-full">
-          <Safari url={project.url} className="shadow-lg h-full pointer-events-none">
-            <div className="relative h-64 w-full">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
-                <div className="p-4 text-white">
-                  <h3 className="text-lg font-bold mb-1">{project.title}</h3>
-                  <p className="text-sm opacity-90 mb-2">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech: string, index: number) => (
-                      <span
-                        key={index}
-                        className="px-2 py-1 text-xs rounded-full bg-emerald-500/80 text-white"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+        <div className="block h-full relative p-3">
+          <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-800">
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            {project.type === "video" && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
+                <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center text-purple-600 shadow-lg transform group-hover:scale-110 transition-transform">
+                  <Play fill="currentColor" className="ml-1" size={20} />
                 </div>
               </div>
-            </div>
-          </Safari>
+            )}
+          </div>
+          <div className="mt-3">
+            <h3 className="text-base font-semibold text-neutral-900 dark:text-white truncate">{project.title}</h3>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400 truncate">{project.category}</p>
+          </div>
         </div>
       </ShineBorder>
     </motion.div>

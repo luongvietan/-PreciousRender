@@ -24,13 +24,13 @@ export default function ProblemSolution() {
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             transition={{ duration: 1, delay: 0.5 }}
-                            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)] animate-pulse"
+                            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)] animate-pulse mt-2 py-1"
                         >
                             Is Holding You Back
                         </motion.span>
                     </h2>
                     <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
-                        Physical inventory comes with hidden costs that eat into your profits-and slow down your growth
+                        Physical inventory comes with hidden costs that eat into your profits<br />and slow down your growth
                     </p>
                 </div>
 
@@ -279,10 +279,10 @@ export default function ProblemSolution() {
                 {/* Transition to Your Services */}
                 <div className="text-center max-w-3xl mx-auto">
                     <h2 className="text-3xl md:text-4xl font-bold mb-6 text-neutral-900 dark:text-white">
-                        Ready to Build Your Virtual Jewelry Showroom?
+                        Ready to Build Your<br />Virtual Jewelry Showroom?
                     </h2>
                     <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-10">
-                        We specialize in creating photorealistic 3D renders that look identical to finished jewelry-so realistic, customers can&apos;t tell the difference. Here&apos;s how we help you transition to virtual inventory:
+                        We specialize in creating photorealistic 3D renders that look identical to finished jewelry-so realistic, customers can&apos;t tell the difference. Here&apos;s how we help you transition<br />to virtual inventory:
                     </p>
                     <a href="#services" className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white rounded-xl font-bold text-lg hover:shadow-lg hover:scale-105 transition-all">
                         Get Started

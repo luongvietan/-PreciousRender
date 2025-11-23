@@ -32,7 +32,7 @@ export default function Hero() {
   return (
     <div
       ref={ref}
-      className="relative pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden min-h-screen flex flex-col justify-center"
+      className="relative pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden min-h-[100vh] flex flex-col justify-center"
     >
       {/* Enhanced background with RetroGrid */}
       {/* Video Background */}
@@ -126,13 +126,13 @@ export default function Hero() {
               href="#portfolio"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative px-6 sm:px-8 py-3 sm:py-4 rounded-md border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors overflow-hidden"
+              className="relative px-6 sm:px-8 py-3 sm:py-4 rounded-md bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-medium flex items-center justify-center hover:shadow-lg transition-shadow overflow-hidden"
             >
               View Portfolio
               <ShineBorder
                 borderWidth={1}
                 duration={10}
-                shineColor={["#9E7AFF", "#FE8BBB"]}
+                shineColor={["#ffffff", "#a3ffec"]}
               >
                 <div></div>
               </ShineBorder>
