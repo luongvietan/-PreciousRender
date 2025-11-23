@@ -210,8 +210,13 @@ export default function ProblemSolution() {
                         {/* Traditional Model */}
                         <div className="bg-red-50/30 dark:bg-red-900/10 rounded-2xl p-8 border border-red-100 dark:border-red-900/20">
                             <h3 className="text-2xl font-bold mb-6 text-red-700 dark:text-red-400 text-center">Traditional Model</h3>
-                            <div className="aspect-video bg-neutral-200 dark:bg-neutral-800 rounded-lg mb-8 flex items-center justify-center">
-                                <span className="text-neutral-500 text-sm">Warehouse Image</span>
+                            <div className="aspect-video bg-neutral-200 dark:bg-neutral-800 rounded-lg mb-8 overflow-hidden relative">
+                                <Image
+                                    src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
+                                    alt="Traditional jewelry warehouse with physical inventory"
+                                    fill
+                                    className="object-cover"
+                                />
                             </div>
                             <ul className="space-y-4">
                                 <li className="flex items-center text-neutral-700 dark:text-neutral-300">
@@ -244,8 +249,13 @@ export default function ProblemSolution() {
                         <div className="bg-emerald-50/30 dark:bg-emerald-900/10 rounded-2xl p-8 border border-emerald-100 dark:border-emerald-900/20 relative overflow-hidden">
                             <div className="absolute top-0 right-0 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">RECOMMENDED</div>
                             <h3 className="text-2xl font-bold mb-6 text-emerald-700 dark:text-emerald-400 text-center">Virtual Inventory Model</h3>
-                            <div className="aspect-video bg-neutral-200 dark:bg-neutral-800 rounded-lg mb-8 flex items-center justify-center">
-                                <span className="text-neutral-500 text-sm">Virtual Catalog Image</span>
+                            <div className="aspect-video bg-neutral-200 dark:bg-neutral-800 rounded-lg mb-8 overflow-hidden relative">
+                                <Image
+                                    src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80"
+                                    alt="Digital virtual jewelry catalog on computer screen"
+                                    fill
+                                    className="object-cover"
+                                />
                             </div>
                             <ul className="space-y-4">
                                 <li className="flex items-center text-neutral-700 dark:text-neutral-300">
