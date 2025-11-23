@@ -15,7 +15,7 @@ export default function ProblemSolution() {
 
                 {/* Opening Hook */}
                 <div className="text-center mb-16 md:mb-20">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-neutral-900 dark:text-white leading-tight">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-neutral-900 dark:text-white leading-none">
                         <TextAnimate animation="blurInUp" by="word">
                             Why Traditional Jewelry Inventory
                         </TextAnimate>
@@ -24,13 +24,14 @@ export default function ProblemSolution() {
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             transition={{ duration: 1, delay: 0.5 }}
-                            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)] animate-pulse mt-2 py-1"
+                            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)] animate-pulse py-1 -mt-2"
                         >
                             Is Holding You Back
                         </motion.span>
                     </h2>
                     <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
-                        Physical inventory comes with hidden costs that eat into your profits<br />and slow down your growth
+                        <span className="block">Physical inventory comes with hidden costs that eat into your profits</span>
+                        <span className="block">and slow down your growth</span>
                     </p>
                 </div>
 
@@ -82,7 +83,7 @@ export default function ProblemSolution() {
                             </p>
                             <div className="flex items-start text-red-600 dark:text-red-400 font-medium text-sm mt-auto">
                                 <AlertCircle className="w-5 h-5 mr-2 flex-shrink-0" />
-                                <span>Risk: Overproduction of unpopular designs, underproduction of hits</span>
+                                <span>Risk: Overproduction of unpopular designs</span>
                             </div>
                         </div>
                     </MagicCard>
@@ -292,7 +293,9 @@ export default function ProblemSolution() {
                         Ready to Build Your<br />Virtual Jewelry Showroom?
                     </h2>
                     <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-10">
-                        We specialize in creating photorealistic 3D renders that look identical to finished jewelry-so realistic, customers can&apos;t tell the difference. Here&apos;s how we help you transition<br />to virtual inventory:
+                        We specialize in creating photorealistic 3D renders that look identical to finished jewelry-so realistic, customers can&apos;t tell the difference.
+                        <br className="block mt-4" />
+                        Here&apos;s how we help you transition to virtual inventory:
                     </p>
                     <a href="#services" className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white rounded-xl font-bold text-lg hover:shadow-lg hover:scale-105 transition-all">
                         Get Started

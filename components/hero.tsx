@@ -126,16 +126,9 @@ export default function Hero() {
               href="#portfolio"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative px-6 sm:px-8 py-3 sm:py-4 rounded-md bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-medium flex items-center justify-center hover:shadow-lg transition-shadow overflow-hidden"
+              className="relative px-6 sm:px-8 py-3 sm:py-4 rounded-md bg-white text-neutral-900 font-bold flex items-center justify-center hover:bg-neutral-100 transition-colors overflow-hidden shadow-lg"
             >
               View Portfolio
-              <ShineBorder
-                borderWidth={1}
-                duration={10}
-                shineColor={["#ffffff", "#a3ffec"]}
-              >
-                <div></div>
-              </ShineBorder>
             </motion.a>
           </div>
 

@@ -132,7 +132,7 @@ export default function Testimonials() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-neutral-900 dark:text-white">
             What Our Clients Say
           </h2>
-          <p className="max-w-none mx-auto text-neutral-600 dark:text-neutral-400 whitespace-nowrap">
+          <p className="max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400">
             Don&apos;t just take our word for it. Here&apos;s what some of our clients have to say about working with us.
           </p>
         </motion.div>

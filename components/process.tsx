@@ -120,19 +120,15 @@ function TimelineItem({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: step * 0.1 }}
       viewport={{ once: true, margin: "-50px" }}
-      className="flex flex-col md:flex-row mb-12 last:mb-0 md:items-start"
+      className="flex flex-row mb-8 md:mb-12 last:mb-0 items-start"
     >
       {/* Step Number and Timeline */}
-      <div className="mr-0 md:mr-6 flex flex-row md:flex-col items-center md:items-center mb-4 md:mb-0 shrink-0">
-        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-300 font-bold text-lg border-4 border-white dark:border-neutral-900 z-10 shrink-0">
+      <div className="mr-4 md:mr-6 flex flex-col items-center shrink-0">
+        <div className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-300 font-bold text-base md:text-lg border-4 border-white dark:border-neutral-900 z-10 shrink-0">
           {step}
         </div>
         {!isLast && (
-          <div className="hidden md:block w-0.5 h-full bg-emerald-200 dark:bg-emerald-800/50 mt-4 min-h-[50px]" />
-        )}
-        {/* Mobile line */}
-        {!isLast && (
-          <div className="md:hidden h-0.5 w-8 bg-emerald-200 dark:bg-emerald-800/50 ml-2" />
+          <div className="w-0.5 h-full bg-emerald-200 dark:bg-emerald-800/50 mt-2 min-h-[50px]" />
         )}
       </div>
 
@@ -140,11 +136,11 @@ function TimelineItem({
       <div className="flex-1 pt-0 md:pt-1.5">
         <div className="flex items-center mb-2">
           <div className="mr-3 shrink-0">{icon}</div>
-          <h3 className="text-xl font-bold text-neutral-900 dark:text-white">
+          <h3 className="text-lg md:text-xl font-bold text-neutral-900 dark:text-white leading-tight">
             {title}
           </h3>
         </div>
-        <p className="text-neutral-600 dark:text-neutral-400 pl-11 md:pl-0">{description}</p>
+        <p className="text-neutral-600 dark:text-neutral-400 text-sm md:text-base">{description}</p>
       </div>
     </motion.div>
   );

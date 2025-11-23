@@ -1,10 +1,8 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Safari } from "@/components/ui/safari";
-import { ShineBorder } from "@/components/ui/shine-border";
 import { ChevronLeft, ChevronRight, X, Play } from "lucide-react";
 import { CompareSlider } from "@/components/ui/compare-slider";
 
@@ -20,15 +18,38 @@ interface Project {
   afterImage?: string;
   videoUrl?: string;
   type: "image" | "video";
+  background?: "bright" | "dark";
 }
 
 export default function Portfolio() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeCategory, setActiveCategory] = useState("still");
+
+  const categories = [
+    {
+      id: "still",
+      label: "Still Images",
+      description: "Clean, high-quality product shots focused on clarity, detail, and perfect lighting for e-commerce.",
+    },
+    {
+      id: "classic",
+      label: "Classic Animations",
+      description: "Elegant 360-degree rotations and simple movements to showcase the full geometry of your designs.",
+    },
+    {
+      id: "creative",
+      label: "Creative Animations",
+      description: "Dynamic motion graphics and cinematic storytelling to elevate your brand marketing.",
+    },
+    {
+      id: "onbody",
+      label: "On-Body Visuals",
+      description: "Realistic visualizations of jewelry worn on models to help customers visualize scale and style.",
+    },
+  ];
 
   // Helper to generate projects
   const generateProjects = () => {
-    const categories = ["still", "classic", "creative", "onbody"];
-
     const stillImages = [
       { src: "/Still Images/Bright Background/01-Robert-Procop-Ring-White-2-Big.jpg", title: "Robert Procop Ring" },
       { src: "/Still Images/Bright Background/0585-Pics_00000.jpg", title: "Diamond Solitaire" },
@@ -81,111 +102,85 @@ export default function Portfolio() {
     const allProjects: Project[] = [];
     let idCounter = 1;
 
-    categories.forEach((cat) => {
-      if (cat === "still") {
-        stillImages.forEach((img) => {
-          allProjects.push({
-            id: idCounter++,
-            title: img.title,
-            category: cat,
-            description: "High-resolution photorealistic render showcasing intricate details and material accuracy.",
-            image: img.src,
-            url: "#",
-            technologies: ["3D Rendering", "Ray Tracing", "High Poly"],
-            type: "image",
-          });
-        });
-      } else if (cat === "onbody") {
-        onBodyImages.forEach((img) => {
-          allProjects.push({
-            id: idCounter++,
-            title: img.title,
-            category: cat,
-            description: "Realistic visualization of jewelry worn on models to help customers visualize scale and style.",
-            image: img.src,
-            url: "#",
-            technologies: ["Compositing", "Model Integration", "Lighting"],
-            type: "image",
-          });
-        });
-      } else if (cat === "classic") {
-        classicThumbnails.forEach((src, i) => {
-          allProjects.push({
-            id: idCounter++,
-            title: `Classic Animation ${i + 1}`,
-            category: cat,
-            description: "Elegant 360-degree rotation showcasing the full geometry of the design.",
-            image: src,
-            url: "#",
-            technologies: ["Animation", "360 Video", "Gold Material"],
-            type: "video",
-            videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Placeholder
-          });
-        });
-      } else if (cat === "creative") {
-        creativeThumbnails.forEach((src, i) => {
-          allProjects.push({
-            id: idCounter++,
-            title: `Creative Campaign ${i + 1}`,
-            category: cat,
-            description: "Dynamic motion graphics and cinematic storytelling for brand marketing.",
-            image: src,
-            url: "#",
-            technologies: ["Motion Graphics", "Cinematic", "VFX"],
-            type: "video",
-            videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Placeholder
-          });
-        });
-      }
+    const getBackground = (path: string): "bright" | "dark" => {
+      return path.toLowerCase().includes("dark background") ? "dark" : "bright";
+    };
+
+    // Still Images
+    stillImages.forEach((img) => {
+      allProjects.push({
+        id: idCounter++,
+        title: img.title,
+        category: "still",
+        description: "High-resolution photorealistic render showcasing intricate details and material accuracy.",
+        image: img.src,
+        url: "#",
+        technologies: ["3D Rendering", "Ray Tracing", "High Poly"],
+        type: "image",
+        background: getBackground(img.src),
+      });
+    });
+
+    // On-Body Visuals
+    onBodyImages.forEach((img) => {
+      allProjects.push({
+        id: idCounter++,
+        title: img.title,
+        category: "onbody",
+        description: "Realistic visualization of jewelry worn on models to help customers visualize scale and style.",
+        image: img.src,
+        url: "#",
+        technologies: ["Compositing", "Model Integration", "Lighting"],
+        type: "image",
+        background: getBackground(img.src),
+      });
+    });
+
+    // Classic Animations
+    classicThumbnails.forEach((src, i) => {
+      allProjects.push({
+        id: idCounter++,
+        title: `Classic Animation ${i + 1}`,
+        category: "classic",
+        description: "Elegant 360-degree rotation showcasing the full geometry of the design.",
+        image: src,
+        url: "#",
+        technologies: ["Animation", "360 Video", "Gold Material"],
+        type: "video",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Placeholder
+        background: getBackground(src),
+      });
+    });
+
+    // Creative Animations
+    creativeThumbnails.forEach((src, i) => {
+      allProjects.push({
+        id: idCounter++,
+        title: `Creative Campaign ${i + 1}`,
+        category: "creative",
+        description: "Dynamic motion graphics and cinematic storytelling for brand marketing.",
+        image: src,
+        url: "#",
+        technologies: ["Motion Graphics", "Cinematic", "VFX"],
+        type: "video",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Placeholder
+        background: getBackground(src),
+      });
     });
 
     return allProjects;
   };
 
-  // Memoize projects to prevent regeneration on every render
-  const projects = useState(generateProjects)[0];
+  const projects = useMemo(() => generateProjects(), []);
 
-  const categories = [
-    {
-      id: "still",
-      label: "Still Images",
-      description: "High-resolution photorealistic renders that capture every detail of your jewelry pieces.",
-    },
-    {
-      id: "classic",
-      label: "Classic Animations",
-      description: "Elegant 360-degree rotations and simple movements to showcase the full geometry of your designs.",
-    },
-    {
-      id: "creative",
-      label: "Creative Animations",
-      description: "Dynamic motion graphics and cinematic storytelling to elevate your brand marketing.",
-    },
-    {
-      id: "onbody",
-      label: "On-Body Visuals",
-      description: "Realistic visualizations of jewelry worn on models to help customers visualize scale and style.",
-    },
-  ];
+  const filteredProjects = useMemo(() => {
+    return projects.filter((p) => p.category === activeCategory);
+  }, [projects, activeCategory]);
 
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-  };
+  const activeCategoryData = categories.find((c) => c.id === activeCategory);
 
   const handleNext = useCallback(() => {
     if (!selectedProject) return;
-    // Find current project in the full list
     const currentIndex = projects.findIndex(p => p.id === selectedProject.id);
     const nextIndex = (currentIndex + 1) % projects.length;
     setSelectedProject(projects[nextIndex]);
@@ -201,22 +196,30 @@ export default function Portfolio() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!selectedProject) return;
-
       if (e.key === "ArrowRight") handleNext();
       if (e.key === "ArrowLeft") handlePrev();
       if (e.key === "Escape") setSelectedProject(null);
     };
-
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedProject, handleNext, handlePrev]);
 
+  const renderGrid = (projectsToRender: Project[]) => (
+    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      {projectsToRender.map((project) => (
+        <ProjectCard
+          key={project.id}
+          project={project}
+          onClick={() => setSelectedProject(project)}
+        />
+      ))}
+    </div>
+  );
+
   return (
-    <section
-      id="portfolio"
-      className="py-12 md:py-16 bg-neutral-50 dark:bg-neutral-900"
-    >
+    <section id="portfolio" className="py-12 md:py-16 bg-neutral-50 dark:bg-neutral-900">
       <div className="container mx-auto px-4 max-w-[1400px]">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -230,47 +233,69 @@ export default function Portfolio() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-neutral-900 dark:text-white">
             Featured Projects
           </h2>
-          <p className="max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400">
-            Take a look at our recent renders. We've helped jewelry brands of all sizes showcase their collections with stunning 3D visuals.
+        </motion.div>
+
+        {/* Tabs */}
+        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`px-4 py-2 md:px-6 md:py-3 rounded-full text-sm md:text-base font-medium transition-all duration-300 ${activeCategory === cat.id
+                  ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/30 scale-105"
+                  : "bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Category Description */}
+        <motion.div
+          key={activeCategory}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="text-center mb-12 max-w-3xl mx-auto"
+        >
+          <p className="text-lg text-neutral-600 dark:text-neutral-400">
+            {activeCategoryData?.description}
           </p>
         </motion.div>
 
-        <div className="space-y-20">
-          {categories.map((category) => {
-            const categoryProjects = projects.filter((p) => p.category === category.id);
-            if (categoryProjects.length === 0) return null;
-
-            return (
-              <div key={category.id} className="relative">
-                <div className="mb-8 text-center md:text-left">
-                  <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-white mb-2">
-                    {category.label}
+        {/* Content */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCategory}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            {(activeCategory === "still" || activeCategory === "classic") ? (
+              <div className="space-y-12">
+                {/* Bright Background */}
+                <div>
+                  <h3 className="text-xl md:text-2xl font-semibold text-center mb-6 text-neutral-800 dark:text-neutral-200">
+                    Bright Background
                   </h3>
-                  <p className="text-neutral-600 dark:text-neutral-400 max-w-3xl">
-                    {category.description}
-                  </p>
+                  {renderGrid(filteredProjects.filter(p => p.background === "bright"))}
                 </div>
 
-                <motion.div
-                  variants={container}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, margin: "-50px" }}
-                  className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"
-                >
-                  {categoryProjects.map((project) => (
-                    <motion.div key={project.id} variants={item}>
-                      <ProjectCard
-                        project={project}
-                        onClick={() => setSelectedProject(project)}
-                      />
-                    </motion.div>
-                  ))}
-                </motion.div>
+                {/* Dark Background */}
+                <div>
+                  <h3 className="text-xl md:text-2xl font-semibold text-center mb-6 text-neutral-800 dark:text-neutral-200">
+                    Dark Background
+                  </h3>
+                  {renderGrid(filteredProjects.filter(p => p.background === "dark"))}
+                </div>
               </div>
-            );
-          })}
-        </div>
+            ) : (
+              renderGrid(filteredProjects)
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Lightbox Modal */}
@@ -363,69 +388,27 @@ export default function Portfolio() {
 function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
   return (
     <motion.div
-      whileHover={{ y: -8 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      className="group h-full cursor-pointer"
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      className="group cursor-pointer relative aspect-square overflow-hidden bg-neutral-100 dark:bg-neutral-800"
       onClick={onClick}
     >
-      <ShineBorder
-        containerClassName="h-full"
-        borderWidth={2}
-        shimmerColor="rgba(16, 185, 129, 0.4)"
-      >
-        <div className="block h-full relative overflow-hidden rounded-xl bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-800">
-          {/* Image Container with Gradient Overlay */}
-          <div className="relative aspect-square w-full overflow-hidden">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
-              className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
-            />
+      <Image
+        src={project.image}
+        alt={project.title}
+        fill
+        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+        className="object-cover transition-transform duration-500 group-hover:scale-110"
+      />
 
-            {/* Gradient Overlay - appears on hover */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-            {/* Shimmer Effect on Hover */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
-
-            {/* Video Play Button */}
-            {project.type === "video" && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div
-                  whileHover={{ scale: 1.15 }}
-                  className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white shadow-2xl backdrop-blur-sm border-2 border-white/20 group-hover:shadow-emerald-500/50 transition-all duration-300"
-                >
-                  <Play fill="currentColor" className="ml-1" size={24} />
-                </motion.div>
-              </div>
-            )}
-          </div>
-
-          {/* Card Info with Glassmorphism */}
-          <div className="relative p-4 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-md">
-            {/* Decorative gradient line */}
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-            <h3 className="text-sm font-semibold text-neutral-900 dark:text-white truncate mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300">
-              {project.title}
-            </h3>
-            <p className="text-xs text-neutral-600 dark:text-neutral-400 truncate uppercase tracking-wider font-medium">
-              {project.category === "still" ? "Still Image" :
-                project.category === "classic" ? "Classic Animation" :
-                  project.category === "creative" ? "Creative Animation" :
-                    "On-Body Visual"}
-            </p>
-
-            {/* Hover indicator */}
-            <div className="mt-2 flex items-center gap-1 text-emerald-600 dark:text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span className="text-xs font-medium">View Details</span>
-              <ChevronRight size={14} className="animate-pulse" />
-            </div>
+      {/* Video Indicator */}
+      {project.type === "video" && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
+          <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/50">
+            <Play fill="white" className="ml-1 text-white" size={20} />
           </div>
         </div>
-      </ShineBorder>
+      )}
     </motion.div>
   );
 }

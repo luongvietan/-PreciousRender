@@ -22,7 +22,7 @@ export default function Features() {
 
   const features = [
     {
-      icon: <Zap className="h-8 w-8 md:h-10 md:w-10 text-white" />,
+      icon: <Zap className="h-6 w-6 md:h-10 md:w-10 text-white" />,
       title: "Lightning-Fast Turnaround",
       description:
         "Multi-PC rendering farm enables us to deliver 5000+ SKU renders on time without compromising quality or detail.",
@@ -30,15 +30,15 @@ export default function Features() {
       gradient: "from-emerald-500 to-cyan-400",
     },
     {
-      icon: <Gem className="h-8 w-8 md:h-10 md:w-10 text-white" />,
+      icon: <Gem className="h-6 w-6 md:h-10 md:w-10 text-white" />,
       title: "Jewelry Rendering Specialists",
       description:
-        "3+ years of specialized expertise focused only on jewelry-specific workflows and lighting setups.",
+        "Over 3 years of dedicated experience in jewelry-specific workflows, ultra-realistic materials, gemstones, and lighting setups.",
       ref: feature2Ref,
       gradient: "from-emerald-500 to-cyan-400",
     },
     {
-      icon: <ShoppingBag className="h-8 w-8 md:h-10 md:w-10 text-white" />,
+      icon: <ShoppingBag className="h-6 w-6 md:h-10 md:w-10 text-white" />,
       title: "E-commerce Ready",
       description:
         "360° turntable videos and photorealistic jewelry renders optimized for e-commerce, social media, and online catalogs",
@@ -46,7 +46,7 @@ export default function Features() {
       gradient: "from-emerald-500 to-cyan-400",
     },
     {
-      icon: <Sparkles className="h-8 w-8 md:h-10 md:w-10 text-white" />,
+      icon: <Sparkles className="h-6 w-6 md:h-10 md:w-10 text-white" />,
       title: "Photorealistic Quality",
       description:
         "Hyper-realistic materials, studio lighting, and advanced rendering techniques that make your jewelry look better than photography.",
@@ -54,7 +54,7 @@ export default function Features() {
       gradient: "from-emerald-500 to-cyan-400",
     },
     {
-      icon: <CheckCircle className="h-8 w-8 md:h-10 md:w-10 text-white" />,
+      icon: <CheckCircle className="h-6 w-6 md:h-10 md:w-10 text-white" />,
       title: "Consistent Quality",
       description:
         "Standardized material libraries and automated workflows ensure every render maintains the same exceptional quality across thousands of SKUs.",
@@ -62,7 +62,7 @@ export default function Features() {
       gradient: "from-emerald-500 to-cyan-400",
     },
     {
-      icon: <Video className="h-8 w-8 md:h-10 md:w-10 text-white" />,
+      icon: <Video className="h-6 w-6 md:h-10 md:w-10 text-white" />,
       title: "Creative Marketing Videos",
       description:
         "Eye-catching motion graphics and cinematic animations designed specifically for social media, digital screens, and advertising campaigns.",
@@ -143,9 +143,9 @@ export default function Features() {
                   <div className="bg-white/80 dark:bg-neutral-800/90 backdrop-blur-sm p-6 rounded-xl h-full shadow-lg">
                     <div className="flex items-center mb-4">
                       <div className="relative mr-4">
-                        <div
+                        {/* <div
                           className={`absolute -inset-1 rounded-full bg-gradient-to-r ${feature.gradient} opacity-90 blur-sm`}
-                        ></div>
+                        ></div> */}
                         <div
                           className={`relative bg-gradient-to-r ${feature.gradient} rounded-full p-3 shadow-lg`}
                         >
