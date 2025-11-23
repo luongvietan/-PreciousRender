@@ -299,7 +299,7 @@ export default function ProblemSolution() {
                         <br className="block mt-4" />
                         Here&apos;s how we help you transition to virtual inventory:
                     </p>
-                    <a href="#services" className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white rounded-xl font-bold text-lg hover:shadow-lg hover:scale-105 transition-all">
+                    <a href="#contact" className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white rounded-xl font-bold text-lg hover:shadow-lg hover:scale-105 transition-all">
                         Get Started
                         <ArrowRight className="ml-2 w-5 h-5" />
                     </a>

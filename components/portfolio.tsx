@@ -77,12 +77,28 @@ export default function Portfolio() {
       { src: "/Still Images/Dark Background/01-Ring-De-Grisogono-2-big.jpg", title: "De Grisogono Ring II" },
     ];
 
-    const onBodyImages = [
-      { src: "/Still Images/Bright Background/bracelet_00012-big.jpg", title: "Diamond Tennis Bracelet" },
-      { src: "/Still Images/Bright Background/bracelet_00013-big.jpg", title: "Diamond Tennis Bracelet II" },
-      { src: "/Still Images/Bright Background/bracelet_00014-big.jpg", title: "Diamond Tennis Bracelet III" },
-      { src: "/Still Images/Dark Background/Braslet.jpg", title: "Luxury Gold Bracelet" },
-      { src: "/Still Images/Dark Background/Cartier-PARIS-NOUVELLE-VAGUE-BRACELET.jpg", title: "Paris Nouvelle Vague" },
+    const onBodyData = [
+      { src: "/Still Images/Bright Background/bracelet_00012-big.jpg", title: "Diamond Tennis Bracelet on Wrist", type: "image" as const },
+      {
+        src: "/Still Images/Dark Background/Braslet.jpg",
+        title: "Elegant Bracelet Showcase",
+        type: "video" as const,
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      },
+      { src: "/Still Images/Bright Background/bracelet_00013-big.jpg", title: "Diamond Tennis Bracelet II", type: "image" as const },
+      {
+        src: "/Still Images/Dark Background/Cartier-PARIS-NOUVELLE-VAGUE-BRACELET.jpg",
+        title: "Paris Nouvelle Vague On-Body",
+        type: "video" as const,
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      },
+      { src: "/Still Images/Bright Background/bracelet_00014-big.jpg", title: "Diamond Tennis Bracelet III", type: "image" as const },
+      {
+        src: "/Still Images/Bright Background/01-Robert-Procop-Ring-White-2-Big.jpg",
+        title: "Ring On Hand Animation",
+        type: "video" as const,
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      },
     ];
 
     const classicThumbnails = [
@@ -121,18 +137,23 @@ export default function Portfolio() {
       });
     });
 
-    // On-Body Visuals
-    onBodyImages.forEach((img) => {
+    // On-Body Visuals - Mix of images and videos
+    onBodyData.forEach((item) => {
       allProjects.push({
         id: idCounter++,
-        title: img.title,
+        title: item.title,
         category: "onbody",
-        description: "Realistic visualization of jewelry worn on models to help customers visualize scale and style.",
-        image: img.src,
+        description: item.type === "video"
+          ? "Cinematic on-body animation showcasing jewelry in motion on models."
+          : "Realistic visualization of jewelry worn on models to help customers visualize scale and style.",
+        image: item.src,
         url: "#",
-        technologies: ["Compositing", "Model Integration", "Lighting"],
-        type: "image",
-        background: getBackground(img.src),
+        technologies: item.type === "video"
+          ? ["Motion Tracking", "On-Body Compositing", "Video Production"]
+          : ["Compositing", "Model Integration", "Lighting"],
+        type: item.type,
+        videoUrl: item.type === "video" ? item.videoUrl : undefined,
+        background: getBackground(item.src),
       });
     });
 
@@ -242,8 +263,8 @@ export default function Portfolio() {
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
               className={`px-4 py-2 md:px-6 md:py-3 rounded-full text-sm md:text-base font-medium transition-all duration-300 ${activeCategory === cat.id
-                  ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/30 scale-105"
-                  : "bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/30 scale-105"
+                : "bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-700"
                 }`}
             >
               {cat.label}

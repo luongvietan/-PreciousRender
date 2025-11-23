@@ -87,23 +87,23 @@ export default function Pricing() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
               className={`rounded-xl p-8 h-full flex flex-col ${plan.highlighted
-                  ? "bg-gradient-to-b from-emerald-500 to-cyan-500 text-white shadow-xl scale-105 z-10"
-                  : "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800"
+                ? "bg-gradient-to-b from-emerald-500 to-cyan-500 text-white shadow-xl scale-105 z-10"
+                : "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800"
                 }`}
             >
               <div className="mb-6">
                 <h3
                   className={`text-2xl font-bold mb-2 ${plan.highlighted
-                      ? "text-white"
-                      : "text-neutral-900 dark:text-white"
+                    ? "text-white"
+                    : "text-neutral-900 dark:text-white"
                     }`}
                 >
                   {plan.name}
                 </h3>
                 <p
                   className={`${plan.highlighted
-                      ? "text-white/90"
-                      : "text-neutral-600 dark:text-neutral-400"
+                    ? "text-white/90"
+                    : "text-neutral-600 dark:text-neutral-400"
                     } mb-4`}
                 >
                   {plan.description}
@@ -111,16 +111,16 @@ export default function Pricing() {
                 <div className="flex items-baseline mb-6">
                   <span
                     className={`text-4xl font-bold ${plan.highlighted
-                        ? "text-white"
-                        : "text-neutral-900 dark:text-white"
+                      ? "text-white"
+                      : "text-neutral-900 dark:text-white"
                       }`}
                   >
                     {plan.price}
                   </span>
                   <span
                     className={`ml-2 ${plan.highlighted
-                        ? "text-white/90"
-                        : "text-neutral-600 dark:text-neutral-400"
+                      ? "text-white/90"
+                      : "text-neutral-600 dark:text-neutral-400"
                       }`}
                   >
                     starting price
@@ -148,16 +148,17 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              <motion.button
+              <motion.a
+                href="#contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`py-3 px-6 rounded-md font-medium ${plan.highlighted
-                    ? "bg-white text-emerald-600 hover:bg-neutral-100"
-                    : "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-200"
+                className={`py-3 px-6 rounded-md font-medium inline-block text-center ${plan.highlighted
+                  ? "bg-white text-emerald-600 hover:bg-neutral-100"
+                  : "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-200"
                   }`}
               >
                 Get Started
-              </motion.button>
+              </motion.a>
             </motion.div>
           ))}
         </div>
