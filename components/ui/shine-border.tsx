@@ -2,6 +2,7 @@
 
 import { useState, useRef, ReactNode } from "react";
 import { motion } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface ShineBorderProps {
   children: ReactNode;
@@ -41,6 +42,7 @@ export function ShineBorder({
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
@@ -83,7 +85,7 @@ export function ShineBorder({
           onMouseLeave={handleMouseLeave}
         >
           {/* Shine effect */}
-          {(isHovered || isActive) && (
+          {(isHovered || isActive) && !isMobile && (
             <motion.div
               className="absolute pointer-events-none"
               animate={{
@@ -104,11 +106,10 @@ export function ShineBorder({
               style={{
                 width: `${shineWidth}px`,
                 height: `${shineWidth * 2}px`,
-                background: `radial-gradient(circle, ${
-                  shineColor ||
+                background: `radial-gradient(circle, ${shineColor ||
                   shimmerColor ||
                   `rgba(255, 255, 255, ${shineBrightness})`
-                } 0%, rgba(255, 255, 255, 0) 70%)`,
+                  } 0%, rgba(255, 255, 255, 0) 70%)`,
                 borderRadius: "50%",
                 filter: "blur(8px)",
                 opacity: 0.8,
@@ -137,7 +138,7 @@ export function ShineBorder({
       onMouseLeave={handleMouseLeave}
     >
       {/* Shine effect */}
-      {(isHovered || isActive) && (
+      {(isHovered || isActive) && !isMobile && (
         <motion.div
           className="absolute pointer-events-none"
           animate={{
@@ -152,11 +153,10 @@ export function ShineBorder({
           style={{
             width: `${shineWidth}px`,
             height: `${shineWidth * 2}px`,
-            background: `radial-gradient(circle, ${
-              shineColor ||
+            background: `radial-gradient(circle, ${shineColor ||
               shimmerColor ||
               `rgba(255, 255, 255, ${shineBrightness})`
-            } 0%, rgba(255, 255, 255, 0) 70%)`,
+              } 0%, rgba(255, 255, 255, 0) 70%)`,
             borderRadius: "50%",
             filter: "blur(8px)",
             opacity: 0.8,

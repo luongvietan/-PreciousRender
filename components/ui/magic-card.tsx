@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { useState, useRef, ReactNode } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface MagicCardProps {
   children?: ReactNode;
@@ -39,6 +40,9 @@ export const MagicCard = ({
     setOpacity(0);
   };
 
+  const isMobile = useIsMobile();
+  const showSpotlight = spotlight && !isMobile;
+
   return (
     <div
       ref={divRef}
@@ -53,7 +57,7 @@ export const MagicCard = ({
       <div
         className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
         style={{
-          opacity: spotlight ? 1 : opacity,
+          opacity: showSpotlight ? opacity : 0,
           background: `radial-gradient(${spotlightSize}px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 80%)`,
         }}
       />

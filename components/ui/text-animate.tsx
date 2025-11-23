@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, MotionProps, Variants } from "framer-motion";
 import { ElementType, memo } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 type AnimationType = "text" | "word" | "character" | "line";
 type AnimationVariant =
@@ -313,8 +314,14 @@ const TextAnimateBase = ({
 }: TextAnimateProps) => {
   const MotionComponent = motion(Component);
 
+  const isMobile = useIsMobile();
+  const shouldAnimate = !isMobile || animation !== "blurInUp"; // Example logic, adjust as needed
+
+  // On mobile, force "line" or "text" splitting for performance if "word" or "character" is selected
+  const effectiveBy = isMobile && (by === "word" || by === "character") ? "line" : by;
+
   let segments: string[] = [];
-  switch (by) {
+  switch (effectiveBy) {
     case "word":
       segments = children.split(/(\s+)/);
       break;
@@ -332,28 +339,28 @@ const TextAnimateBase = ({
 
   const finalVariants = variants
     ? {
-        container: {
-          hidden: { opacity: 0 },
-          show: {
-            opacity: 1,
-            transition: {
-              opacity: { duration: 0.01, delay },
-              delayChildren: delay,
-              staggerChildren: duration / segments.length,
-            },
-          },
-          exit: {
-            opacity: 0,
-            transition: {
-              staggerChildren: duration / segments.length,
-              staggerDirection: -1,
-            },
+      container: {
+        hidden: { opacity: 0 },
+        show: {
+          opacity: 1,
+          transition: {
+            opacity: { duration: 0.01, delay },
+            delayChildren: delay,
+            staggerChildren: duration / segments.length,
           },
         },
-        item: variants,
-      }
+        exit: {
+          opacity: 0,
+          transition: {
+            staggerChildren: duration / segments.length,
+            staggerDirection: -1,
+          },
+        },
+      },
+      item: variants,
+    }
     : animation
-    ? {
+      ? {
         container: {
           ...defaultItemAnimationVariants[animation].container,
           show: {
@@ -373,7 +380,15 @@ const TextAnimateBase = ({
         },
         item: defaultItemAnimationVariants[animation].item,
       }
-    : { container: defaultContainerVariants, item: defaultItemVariants };
+      : { container: defaultContainerVariants, item: defaultItemVariants };
+
+  if (isMobile) {
+    return (
+      <Component className={cn("whitespace-pre-wrap", className)} {...props}>
+        {children}
+      </Component>
+    )
+  }
 
   return (
     <AnimatePresence mode="wait">
@@ -389,12 +404,12 @@ const TextAnimateBase = ({
       >
         {segments.map((segment, i) => (
           <motion.span
-            key={`${by}-${segment}-${i}`}
+            key={`${effectiveBy}-${segment}-${i}`}
             variants={finalVariants.item}
-            custom={i * staggerTimings[by]}
+            custom={i * staggerTimings[effectiveBy]}
             className={cn(
-              by === "line" ? "block" : "inline-block whitespace-pre",
-              by === "character" && "",
+              effectiveBy === "line" ? "block" : "inline-block whitespace-pre",
+              effectiveBy === "character" && "",
               segmentClassName
             )}
           >

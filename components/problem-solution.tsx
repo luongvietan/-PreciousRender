@@ -216,6 +216,7 @@ export default function ProblemSolution() {
                                     src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
                                     alt="Traditional jewelry warehouse with physical inventory"
                                     fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     className="object-cover"
                                 />
                             </div>
@@ -255,6 +256,7 @@ export default function ProblemSolution() {
                                     src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80"
                                     alt="Digital virtual jewelry catalog on computer screen"
                                     fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     className="object-cover"
                                 />
                             </div>
