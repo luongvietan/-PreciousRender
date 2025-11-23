@@ -362,32 +362,67 @@ export default function Portfolio() {
 
 function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
   return (
-    <motion.div whileHover={{ y: -5 }} className="group h-full cursor-pointer" onClick={onClick}>
+    <motion.div
+      whileHover={{ y: -8 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className="group h-full cursor-pointer"
+      onClick={onClick}
+    >
       <ShineBorder
         containerClassName="h-full"
-        borderWidth={1}
-        shimmerColor="rgba(16, 185, 129, 0.2)"
+        borderWidth={2}
+        shimmerColor="rgba(16, 185, 129, 0.4)"
       >
-        <div className="block h-full relative">
-          <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-800">
+        <div className="block h-full relative overflow-hidden rounded-xl bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-800">
+          {/* Image Container with Gradient Overlay */}
+          <div className="relative aspect-square w-full overflow-hidden">
             <Image
               src={project.image}
               alt={project.title}
               fill
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
+              className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
             />
+
+            {/* Gradient Overlay - appears on hover */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            {/* Shimmer Effect on Hover */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+
+            {/* Video Play Button */}
             {project.type === "video" && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
-                <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center text-emerald-600 shadow-lg transform group-hover:scale-110 transition-transform">
-                  <Play fill="currentColor" className="ml-1" size={20} />
-                </div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <motion.div
+                  whileHover={{ scale: 1.15 }}
+                  className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white shadow-2xl backdrop-blur-sm border-2 border-white/20 group-hover:shadow-emerald-500/50 transition-all duration-300"
+                >
+                  <Play fill="currentColor" className="ml-1" size={24} />
+                </motion.div>
               </div>
             )}
           </div>
-          <div className="mt-3">
-            <h3 className="text-sm font-medium text-neutral-900 dark:text-white truncate">{project.title}</h3>
-            <p className="text-xs text-neutral-500 dark:text-neutral-400 truncate">{project.category}</p>
+
+          {/* Card Info with Glassmorphism */}
+          <div className="relative p-4 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-md">
+            {/* Decorative gradient line */}
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <h3 className="text-sm font-semibold text-neutral-900 dark:text-white truncate mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300">
+              {project.title}
+            </h3>
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 truncate uppercase tracking-wider font-medium">
+              {project.category === "still" ? "Still Image" :
+                project.category === "classic" ? "Classic Animation" :
+                  project.category === "creative" ? "Creative Animation" :
+                    "On-Body Visual"}
+            </p>
+
+            {/* Hover indicator */}
+            <div className="mt-2 flex items-center gap-1 text-emerald-600 dark:text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span className="text-xs font-medium">View Details</span>
+              <ChevronRight size={14} className="animate-pulse" />
+            </div>
           </div>
         </div>
       </ShineBorder>
