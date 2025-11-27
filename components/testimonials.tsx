@@ -13,6 +13,7 @@ interface CompanyLogo {
   lightSrc?: string;
   darkSrc?: string;
   alt: string;
+  invertOnDark?: boolean; // Flag to invert colors in dark mode
 }
 
 export default function Testimonials() {
@@ -67,50 +68,59 @@ export default function Testimonials() {
     },
   ];
 
-  // Danh sách các logo công ty nổi tiếng từ Icons8
+  // Danh sách các logo công ty trusted partners
   const companyLogos = [
     {
-      name: "Adobe",
-      lightSrc:
-        "https://img.icons8.com/?size=100&id=118571&format=png&color=FF0000",
-      darkSrc:
-        "https://img.icons8.com/?size=100&id=118571&format=png&color=FF0000",
-      alt: "Adobe logo",
+      name: "Emerald",
+      src: "/images/emerald.png",
+      alt: "Emerald logo",
+      invertOnDark: false, // Orange logo - looks good on both themes
     },
     {
-      name: "Apple",
-      lightSrc:
-        "https://img.icons8.com/?size=100&id=30840&format=png&color=000000",
-      darkSrc:
-        "https://img.icons8.com/?size=100&id=30840&format=png&color=FFFFFF",
-      alt: "Apple logo",
+      name: "Kohira",
+      src: "/images/kohira.png",
+      alt: "Kohira logo",
+      invertOnDark: false, // Pink/coral logo - looks good on both themes
     },
     {
-      name: "Microsoft",
-      src: "https://img.icons8.com/color/96/microsoft.png",
-      alt: "Microsoft logo",
+      name: "Limelight",
+      src: "/images/limelight.png",
+      alt: "Limelight logo",
+      invertOnDark: true, // Dark purple text - needs invert on dark theme
     },
     {
-      name: "Google",
-      src: "https://img.icons8.com/color/96/google-logo.png",
-      alt: "Google logo",
+      name: "Uare",
+      src: "/images/uare.png",
+      alt: "Uare logo",
+      invertOnDark: true, // Dark gray text - needs invert on dark theme
     },
     {
-      name: "IBM",
-      src: "https://img.icons8.com/color/96/ibm.png",
-      alt: "IBM logo",
+      name: "Andor",
+      src: "/images/andor.png",
+      alt: "Andor Luxury logo",
+      invertOnDark: true, // Orange/coral logo but dark text - needs invert on dark theme
     },
   ];
 
-  // Hàm lấy URL hình ảnh dựa vào theme
+  // Hàm lấy URL hình ảnh
   const getLogoSrc = (logo: CompanyLogo): string => {
-    if (!mounted) return logo.src || logo.lightSrc || "";
+    return logo.src || "";
+  };
 
-    if (logo.name === "Adobe" || logo.name === "Apple") {
-      return theme === "dark" ? logo.darkSrc || "" : logo.lightSrc || "";
+  // Hàm lấy class CSS cho logo dựa vào theme
+  const getLogoClassName = (logo: CompanyLogo): string => {
+    const baseClasses = "object-contain transition-all duration-300";
+    
+    if (!mounted) {
+      return `${baseClasses} opacity-80`;
     }
 
-    return logo.src || "";
+    // Invert colors for dark logos in dark theme
+    if (logo.invertOnDark && theme === "dark") {
+      return `${baseClasses} brightness-0 invert opacity-90 hover:opacity-100`;
+    }
+
+    return `${baseClasses} opacity-80 hover:opacity-100`;
   };
 
   return (
@@ -165,7 +175,7 @@ export default function Testimonials() {
             {companyLogos.map((logo, i) => (
               <motion.div
                 key={i}
-                className="h-12 w-auto flex items-center justify-center"
+                className="h-16 md:h-20 w-auto flex items-center justify-center px-4"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: i * 0.1 }}
@@ -174,9 +184,10 @@ export default function Testimonials() {
                 <Image
                   src={getLogoSrc(logo)}
                   alt={logo.alt}
-                  width={48}
-                  height={48}
-                  className="object-contain"
+                  width={120}
+                  height={80}
+                  className={getLogoClassName(logo)}
+                  priority
                 />
               </motion.div>
             ))}

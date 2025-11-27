@@ -225,8 +225,8 @@ export default function ProblemSolution() {
                             <h3 className="text-2xl font-bold mb-6 text-red-700 dark:text-red-400 text-center">Traditional Model</h3>
                             <div className="aspect-video bg-neutral-200 dark:bg-neutral-800 rounded-lg mb-8 overflow-hidden relative">
                                 <Image
-                                    src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
-                                    alt="Traditional jewelry warehouse with physical inventory"
+                                    src="/images/image%20(4).png"
+                                    alt="Traditional jewelry showcase with physical inventory"
                                     fill
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     className="object-cover"
@@ -265,7 +265,7 @@ export default function ProblemSolution() {
                             <h3 className="text-2xl font-bold mb-6 text-emerald-700 dark:text-emerald-400 text-center">Virtual Inventory Model</h3>
                             <div className="aspect-video bg-neutral-200 dark:bg-neutral-800 rounded-lg mb-8 overflow-hidden relative">
                                 <Image
-                                    src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80"
+                                    src="/images/e61edaea-7a28-4ae4-9eac-33a58c09fcf9.png"
                                     alt="Digital virtual jewelry catalog on computer screen"
                                     fill
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
