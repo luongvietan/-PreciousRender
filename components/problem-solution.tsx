@@ -15,23 +15,24 @@ export default function ProblemSolution() {
 
                 {/* Opening Hook */}
                 <div className="text-center mb-16 md:mb-20">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-neutral-900 dark:text-white leading-none">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-neutral-900 dark:text-white leading-tight">
                         <TextAnimate animation="blurInUp" by="word">
                             Why Traditional Jewelry Inventory
                         </TextAnimate>
-                        <br className="hidden md:block" />
+                        <br />
                         <motion.span
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             transition={{ duration: 1, delay: 0.5 }}
-                            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)] animate-pulse py-1 -mt-2"
+                            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)] animate-pulse py-1"
                         >
                             Is Holding You Back
                         </motion.span>
                     </h2>
                     <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
-                        <span className="block">Physical inventory comes with hidden costs that eat into your profits</span>
-                        <span className="block">and slow down your growth</span>
+                        Physical inventory comes with hidden costs that eat into your profits
+                        <br />
+                        and slow down your growth
                     </p>
                 </div>
 
@@ -98,9 +99,14 @@ export default function ProblemSolution() {
                                 <div className="inline-block px-4 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-semibold text-sm mb-6">
                                     The Virtual Inventory Revolution
                                 </div>
-                                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-neutral-900 dark:text-white">
-                                    From CAD to Catalog - Without Stock
-                                </h2>
+                                <div className="flex items-center justify-center gap-4 mb-6">
+                                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0">
+                                        <Layers className="w-6 h-6 md:w-8 md:h-8" />
+                                    </div>
+                                    <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white text-left">
+                                        From CAD to Catalog - Without Stock
+                                    </h2>
+                                </div>
                                 <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
                                     What if you could showcase 1000+ jewelry designs to customers without manufacturing a single piece? With photorealistic 3D rendering, your entire catalog exists digitally-ready to be produced only when customers place orders.
                                 </p>
@@ -128,10 +134,12 @@ export default function ProblemSolution() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
                     {/* Benefit 1 */}
                     <div className="p-6 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-emerald-500 dark:hover:border-emerald-500 transition-colors group">
-                        <div className="w-12 h-12 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <Layers className="w-6 h-6" />
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="w-12 h-12 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <Layers className="w-6 h-6" />
+                            </div>
+                            <h3 className="text-xl font-bold text-neutral-900 dark:text-white">Infinite Showcase</h3>
                         </div>
-                        <h3 className="text-xl font-bold mb-3 text-neutral-900 dark:text-white">Infinite Showcase</h3>
                         <p className="text-neutral-600 dark:text-neutral-400">
                             Display 5000 designs on your website using 360° renders and videos-customers see every detail as if the piece was already made.
                         </p>
@@ -139,10 +147,12 @@ export default function ProblemSolution() {
 
                     {/* Benefit 2 */}
                     <div className="p-6 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-emerald-500 dark:hover:border-emerald-500 transition-colors group">
-                        <div className="w-12 h-12 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <DollarSign className="w-6 h-6" />
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="w-12 h-12 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <DollarSign className="w-6 h-6" />
+                            </div>
+                            <h3 className="text-xl font-bold text-neutral-900 dark:text-white">Zero Capital Lock-In</h3>
                         </div>
-                        <h3 className="text-xl font-bold mb-3 text-neutral-900 dark:text-white">Zero Capital Lock-In</h3>
                         <p className="text-neutral-600 dark:text-neutral-400">
                             Instead of investing ₹50L in inventory, spend ₹2-5L on renders. Manufacture only confirmed orders. Save 70-90% upfront costs.
                         </p>
@@ -150,10 +160,12 @@ export default function ProblemSolution() {
 
                     {/* Benefit 3 */}
                     <div className="p-6 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-emerald-500 dark:hover:border-emerald-500 transition-colors group">
-                        <div className="w-12 h-12 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <FlaskConical className="w-6 h-6" />
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="w-12 h-12 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <FlaskConical className="w-6 h-6" />
+                            </div>
+                            <h3 className="text-xl font-bold text-neutral-900 dark:text-white">Test Before Manufacturing</h3>
                         </div>
-                        <h3 className="text-xl font-bold mb-3 text-neutral-900 dark:text-white">Test Before Manufacturing</h3>
                         <p className="text-neutral-600 dark:text-neutral-400">
                             Launch new collections virtually. Track engagement and pre-orders. Manufacture only winning designs based on real customer interest.
                         </p>

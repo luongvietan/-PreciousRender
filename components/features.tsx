@@ -134,13 +134,13 @@ export default function Features() {
             >
               <MagicCard className="w-full h-full">
                 <ShineBorder
-                  className="w-full h-full rounded-xl"
+                  className="w-full h-full rounded-2xl"
                   borderWidth={2}
                   duration={2000}
                   isActive={activeFeature === index}
-                  borderRadius="0.75rem"
+                  borderRadius="1rem"
                 >
-                  <div className="bg-white/80 dark:bg-neutral-800/90 backdrop-blur-sm p-6 rounded-xl h-full shadow-lg">
+                  <div className="bg-white/80 dark:bg-neutral-800/90 backdrop-blur-sm p-6 rounded-2xl h-full shadow-lg">
                     <div className="flex items-center mb-4">
                       <div className="relative mr-4">
                         {/* <div
