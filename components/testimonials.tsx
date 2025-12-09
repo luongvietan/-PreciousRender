@@ -4,7 +4,7 @@ import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import Image from "next/image";
 import { ShineBorder } from "@/components/ui/shine-border";
 import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface CompanyLogo {
@@ -16,18 +16,7 @@ interface CompanyLogo {
   invertOnDark?: boolean; // Flag to invert colors in dark mode
 }
 
-export default function Testimonials() {
-  const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
-
-  // Đảm bảo component chỉ render ở client side
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const testimonials = [
+const testimonials = [
     {
       quote:
         "Precious Render transformed our entire catalog of 2000+ rings. The photorealistic quality exceeded our expectations, and customers can't tell the difference from professional photography. Our online sales increased 45%.",
@@ -68,7 +57,55 @@ export default function Testimonials() {
       image:
         "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
     },
-  ];
+];
+
+export default function Testimonials() {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Đảm bảo component chỉ render ở client side
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Auto-rotate testimonials
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setDirection(1);
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000); // Change every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  // Helper function to pause auto-play temporarily
+  const pauseTemporarily = () => {
+    setIsPaused(true);
+    // Clear existing timeout if any
+    if (pauseTimeoutRef.current) {
+      clearTimeout(pauseTimeoutRef.current);
+    }
+    // Resume auto-play after 3 seconds of inactivity
+    pauseTimeoutRef.current = setTimeout(() => {
+      setIsPaused(false);
+      pauseTimeoutRef.current = null;
+    }, 3000);
+  };
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (pauseTimeoutRef.current) {
+        clearTimeout(pauseTimeoutRef.current);
+      }
+    };
+  }, []);
 
   // Danh sách các logo công ty trusted partners
   const companyLogos = [
@@ -127,16 +164,19 @@ export default function Testimonials() {
 
   // Navigation functions
   const nextTestimonial = () => {
+    pauseTemporarily();
     setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
 
   const prevTestimonial = () => {
+    pauseTemporarily();
     setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   const goToTestimonial = (index: number) => {
+    pauseTemporarily();
     setDirection(index > currentIndex ? 1 : -1);
     setCurrentIndex(index);
   };
@@ -146,9 +186,13 @@ export default function Testimonials() {
     const swipeThreshold = 50;
     
     if (info.offset.x > swipeThreshold) {
-      prevTestimonial();
+      pauseTemporarily();
+      setDirection(-1);
+      setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
     } else if (info.offset.x < -swipeThreshold) {
-      nextTestimonial();
+      pauseTemporarily();
+      setDirection(1);
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
     }
   };
 
@@ -210,7 +254,11 @@ export default function Testimonials() {
         >
           <div className="relative max-w-4xl mx-auto py-8 px-4">
             {/* Testimonial Slider */}
-            <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
+            <div 
+              className="relative overflow-hidden rounded-2xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
               <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
                   key={currentIndex}
