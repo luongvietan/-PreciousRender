@@ -1,11 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
+import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import Image from "next/image";
 import { ShineBorder } from "@/components/ui/shine-border";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface CompanyLogo {
   name: string;
@@ -19,6 +19,8 @@ interface CompanyLogo {
 export default function Testimonials() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
 
   // Đảm bảo component chỉ render ở client side
   useEffect(() => {
@@ -123,6 +125,60 @@ export default function Testimonials() {
     return `${baseClasses} opacity-80 hover:opacity-100`;
   };
 
+  // Navigation functions
+  const nextTestimonial = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const goToTestimonial = (index: number) => {
+    setDirection(index > currentIndex ? 1 : -1);
+    setCurrentIndex(index);
+  };
+
+  // Handle drag end for swipe gesture
+  const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    const swipeThreshold = 50;
+    
+    if (info.offset.x > swipeThreshold) {
+      prevTestimonial();
+    } else if (info.offset.x < -swipeThreshold) {
+      nextTestimonial();
+    }
+  };
+
+  // Animation variants
+  const testimonialVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.95,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut",
+      },
+    },
+    exit: (direction: number) => ({
+      x: direction > 0 ? -300 : 300,
+      opacity: 0,
+      scale: 0.95,
+      transition: {
+        duration: 0.4,
+        ease: "easeIn",
+      },
+    }),
+  };
+
   return (
     <section
       id="testimonials"
@@ -152,12 +208,93 @@ export default function Testimonials() {
           borderWidth={1}
           shimmerColor="rgba(16, 185, 129, 0.2)"
         >
-          <div className="-mx-4 sm:-mx-8 md:-mx-12 lg:-mx-16 py-4">
-            <InfiniteMovingCards
-              items={testimonials}
-              direction="right"
-              speed="slow"
-            />
+          <div className="relative max-w-4xl mx-auto py-8 px-4">
+            {/* Testimonial Slider */}
+            <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
+              <AnimatePresence initial={false} custom={direction} mode="wait">
+                <motion.div
+                  key={currentIndex}
+                  custom={direction}
+                  variants={testimonialVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={handleDragEnd}
+                  className="p-8 md:p-12 cursor-grab active:cursor-grabbing"
+                >
+                  <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center">
+                    {/* Avatar */}
+                    {testimonials[currentIndex].image && (
+                      <div className="flex-shrink-0">
+                        <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-emerald-100 dark:border-emerald-900/30">
+                          <Image
+                            src={testimonials[currentIndex].image}
+                            alt={testimonials[currentIndex].name}
+                            fill
+                            sizes="96px"
+                            className="object-cover"
+                          />
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* Content */}
+                    <div className="flex-1 text-center md:text-left">
+                      <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-300 mb-6 italic leading-relaxed">
+                        &ldquo;{testimonials[currentIndex].quote}&rdquo;
+                      </p>
+                      <div>
+                        <p className="font-semibold text-neutral-900 dark:text-white text-lg">
+                          {testimonials[currentIndex].name}
+                        </p>
+                        <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+                          {testimonials[currentIndex].title}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Navigation Buttons */}
+              <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-6 flex gap-2">
+                <button
+                  onClick={prevTestimonial}
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors shadow-md"
+                  aria-label="Previous testimonial"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-6 flex gap-2">
+                <button
+                  onClick={nextTestimonial}
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors shadow-md"
+                  aria-label="Next testimonial"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Dots Indicator */}
+              <div className="flex justify-center gap-2 pb-6 pt-4">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToTestimonial(index)}
+                    className={`transition-all duration-300 rounded-full ${
+                      index === currentIndex
+                        ? "w-8 h-2 bg-emerald-500 dark:bg-emerald-400"
+                        : "w-2 h-2 bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-400 dark:hover:bg-neutral-600"
+                    }`}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </ShineBorder>
 

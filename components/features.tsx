@@ -132,7 +132,7 @@ export default function Features() {
               onMouseLeave={() => setActiveFeature(null)}
               className="relative h-full"
             >
-              <MagicCard className="w-full h-full">
+              <MagicCard className="w-full h-full rounded-2xl">
                 <ShineBorder
                   className="w-full h-full rounded-2xl"
                   borderWidth={2}

@@ -134,11 +134,11 @@ export default function ProblemSolution() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
                     {/* Benefit 1 */}
                     <div className="p-6 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-emerald-500 dark:hover:border-emerald-500 transition-colors group">
-                        <div className="flex items-center gap-3 mb-4">
+                        <div className="flex items-center gap-3 mb-4 flex-nowrap">
                             <div className="w-12 h-12 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                                 <Layers className="w-6 h-6" />
                             </div>
-                            <h3 className="text-xl font-bold text-neutral-900 dark:text-white">Infinite Showcase</h3>
+                            <h3 className="text-xl font-bold text-neutral-900 dark:text-white min-w-0">Infinite Showcase</h3>
                         </div>
                         <p className="text-neutral-600 dark:text-neutral-400">
                             Display 5000 designs on your website using 360° renders and videos-customers see every detail as if the piece was already made.
@@ -147,11 +147,11 @@ export default function ProblemSolution() {
 
                     {/* Benefit 2 */}
                     <div className="p-6 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-emerald-500 dark:hover:border-emerald-500 transition-colors group">
-                        <div className="flex items-center gap-3 mb-4">
+                        <div className="flex items-center gap-3 mb-4 flex-nowrap">
                             <div className="w-12 h-12 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                                 <DollarSign className="w-6 h-6" />
                             </div>
-                            <h3 className="text-xl font-bold text-neutral-900 dark:text-white">Zero Capital Lock-In</h3>
+                            <h3 className="text-xl font-bold text-neutral-900 dark:text-white min-w-0">Zero Capital Lock-In</h3>
                         </div>
                         <p className="text-neutral-600 dark:text-neutral-400">
                             Instead of investing ₹50L in inventory, spend ₹2-5L on renders. Manufacture only confirmed orders. Save 70-90% upfront costs.
@@ -160,11 +160,11 @@ export default function ProblemSolution() {
 
                     {/* Benefit 3 */}
                     <div className="p-6 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-emerald-500 dark:hover:border-emerald-500 transition-colors group">
-                        <div className="flex items-center gap-3 mb-4">
+                        <div className="flex items-center gap-3 mb-4 flex-nowrap">
                             <div className="w-12 h-12 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                                 <FlaskConical className="w-6 h-6" />
                             </div>
-                            <h3 className="text-xl font-bold text-neutral-900 dark:text-white">Test Before Manufacturing</h3>
+                            <h3 className="text-xl font-bold text-neutral-900 dark:text-white min-w-0">Test Before Manufacturing</h3>
                         </div>
                         <p className="text-neutral-600 dark:text-neutral-400">
                             Launch new collections virtually. Track engagement and pre-orders. Manufacture only winning designs based on real customer interest.

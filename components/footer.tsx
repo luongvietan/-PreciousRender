@@ -54,13 +54,13 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center">
-              <div className="relative h-10 w-auto">
+              <div className="relative">
                 <Image
-                  src="/logo.png"
+                  src="/Precious Render.png"
                   alt="Precious Render Logo"
-                  width={150}
-                  height={50}
-                  className="h-full w-auto object-contain brightness-0 dark:invert"
+                  width={320}
+                  height={120}
+                  className="h-16 w-auto object-contain"
                   priority
                 />
               </div>
